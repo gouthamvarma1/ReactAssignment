@@ -64,7 +64,7 @@ function RegisterForm() {
                 <label htmlFor="Full Name">Full Name</label>
                 <TextField
                     id="FullName"
-                    label="FullName"
+                    label="FirstName LastName"
                     defaultValue=""
                     variant="outlined"
                 />
@@ -73,7 +73,7 @@ function RegisterForm() {
                 <label htmlFor="email@domain.com">Email address</label>
                 <TextField
                     id="userNameR"
-                    label="UserName"
+                    label="email@domain.com"
                     defaultValue=""
                     variant="outlined"
                 />

@@ -35,7 +35,7 @@ function LoginAndRegistartion() {
               </Paper>
             </Grid>
             <Grid item lg={6} sm={12}>
-              <Paper className={classes.paper}>REGISTRATIION FORM
+              <Paper className={classes.paper}>REGISTRATION FORM
               <RegisterForm />
               </Paper>
             </Grid> 

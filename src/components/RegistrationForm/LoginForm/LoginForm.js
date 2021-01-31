@@ -47,7 +47,7 @@ function LoginForm() {
           <Toolbar>
             <Typography variant="h6">Taxila Public School - Learning Management Software</Typography>
           </Toolbar>
-        </AppBar>
+        </AppBar>   
             </div>
 
 
@@ -57,7 +57,7 @@ function LoginForm() {
                 <div>
                 <TextField
                     id="userName"
-                    label="UserName"
+                    label="email@domain.com"
                     defaultValue=""
                     variant="outlined"
                 />
