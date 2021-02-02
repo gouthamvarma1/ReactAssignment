@@ -16,22 +16,134 @@ import Typography from "@material-ui/core/Typography";
 const useStyles = makeStyles((theme) => ({
     root: {
         '& .MuiTextField-root': {
-         margin: theme.spacing(1),
+            margin: theme.spacing(1),
             width: 200,
         },
     },
     formControl: {
-       // margin: theme.spacing(1),
+        // margin: theme.spacing(1),
         minWidth: 120,
     },
     selectEmpty: {
         marginTop: theme.spacing(2),
     },
 
-
-
 }));
+var charLengthErrorMessage = ""
+var lowercaseErrorMessage = ""
+var uppercaseErrorMessage = ""
+var specialErrorMessage = ""
+var userNameError = ""
+var roleErrorMessage= ""
 
+function validateEmail(email) {
+    console.log("validationg email")
+    const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(String(email).toLowerCase());
+}
+
+function validatePassword() {
+
+    var password = document.getElementById("password")
+    var pattern = {
+        charLength: function () {
+            if (password.value.length >= 8) {
+                return true;
+            }
+        },
+        lowercase: function () {
+            var regex = /^(?=.*[a-z]).+$/; // Lowercase character pattern
+
+            if (regex.test(password.value)) {
+
+                return true;
+            }
+        },
+        uppercase: function () {
+            var regex = /^(?=.*[A-Z]).+$/; // Uppercase character pattern
+            if (regex.test(password.value)) {
+                return true;
+            }
+        },
+        special: function () {
+            var regex = /^(?=.*[0-9_\W]).+$/; // Special character or number pattern
+
+            if (regex.test(password.value)) {
+                return true;
+            }
+        }
+
+
+    };
+
+    if (pattern.charLength() !== true) {
+        charLengthErrorMessage = "Password should contain minimum of 8 characters"
+    }
+    if (pattern.lowercase() !== true) {
+        lowercaseErrorMessage = "Password should contain atleast one lower character"
+    }
+    if (pattern.uppercase() !== true) {
+        uppercaseErrorMessage = "Password should contain atleast one upper character"
+    }
+    if (pattern.special() !== true) {
+        specialErrorMessage = "Password should consists atleast a number or a special character"
+    }
+
+
+    document.getElementById("msg1").innerHTML = charLengthErrorMessage;
+    document.getElementById("msg2").innerHTML = lowercaseErrorMessage;
+    document.getElementById("msg3").innerHTML = uppercaseErrorMessage;
+    document.getElementById("msg4").innerHTML = specialErrorMessage;
+
+
+}
+
+function clearErrorMessages() {
+    roleErrorMessage =""
+    charLengthErrorMessage = ""
+    lowercaseErrorMessage = ""
+    uppercaseErrorMessage = ""
+    specialErrorMessage = ""
+    userNameError = ""
+    document.getElementById("msg1").innerHTML = "";
+    document.getElementById("msg2").innerHTML = "";
+    document.getElementById("msg3").innerHTML = "";
+    document.getElementById("msg4").innerHTML = "";
+    document.getElementById("emailmsg").innerHTML = "";
+    document.getElementById("roleError").innerHTML = "";
+
+}
+
+function validateRole()
+{
+    var role=document.getElementById("role").innerHTML
+    if(role.includes("<span>"))
+        {
+            roleErrorMessage="Please select the appropriate role"
+        }
+        document.getElementById("roleError").innerHTML = roleErrorMessage;
+
+}
+function validateForm() {
+    clearErrorMessages()
+    var email = document.getElementById('userName').value;
+    var password = document.getElementById('password').value;
+
+    console.log("entered Validation")
+
+    if (email === "") {
+        userNameError = "Please Enter the email"
+    }
+    else {
+        var status = validateEmail(email);
+        if (!status === true)
+            userNameError = "Please enter the email properly"
+
+    }
+    document.getElementById("emailmsg").innerHTML = userNameError;
+    validatePassword(password)
+    validateRole()
+}
 function LoginForm() {
 
     const classes = useStyles();
@@ -43,18 +155,18 @@ function LoginForm() {
         <form className={classes.root} noValidate autoComplete="off" id='LoginForm'>
 
             <div>
-            <AppBar>
-          <Toolbar>
-            <Typography variant="h6">Taxila Public School - Learning Management Software</Typography>
-          </Toolbar>
-        </AppBar>   
+                <AppBar>
+                    <Toolbar>
+                        <Typography variant="h6">Taxila Public School - Learning Management Software</Typography>
+                    </Toolbar>
+                </AppBar>
             </div>
 
 
             <div>
                 <label htmlFor="email@domain.com">Email address</label>
-                </div>
-                <div>
+            </div>
+            <div>
                 <TextField
                     id="userName"
                     label="email@domain.com"
@@ -64,8 +176,8 @@ function LoginForm() {
             </div>
             <div>
                 <label htmlFor="email@domain.com">Password</label>
-                </div>
-                <div>
+            </div>
+            <div>
                 <TextField
                     id="password"
                     label="Password"
@@ -95,18 +207,23 @@ function LoginForm() {
                 </FormControl>
             </div>
             <ButtonGroup color="primary" aria-label="outlined primary button group" variant="contained">
-                <Button>Login</Button>
+                <Button onClick={validateForm} id="loginButton">Login</Button>
             </ButtonGroup>
             <div>
-            <Link
-  component="button"
-  variant="body2"
-  onClick={() => {
-    console.info("Handle me later during coding");
-  }}
->
-  Forgot Password 
+                <Link
+                    component="button"
+                    variant="body2"
+                    onClick={validatePassword}>
+                    Forgot Password
 </Link>
+            </div>
+            <div>
+                <p id="emailmsg"></p>
+                <p id="msg1"></p>
+                <p id="msg2"></p>
+                <p id="msg3"></p>
+                <p id="msg4"></p>
+                <p id="roleError"></p>
             </div>
 
 
@@ -115,3 +232,4 @@ function LoginForm() {
 
 }
 export default LoginForm;
+
