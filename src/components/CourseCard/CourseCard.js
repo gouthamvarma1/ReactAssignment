@@ -10,6 +10,7 @@ import Typography from '@material-ui/core/Typography';
 import GradeIcon from '@material-ui/icons/Grade';
 import ViewModuleIcon from '@material-ui/icons/ViewModule';
 import AssignmentIcon from '@material-ui/icons/Assignment';
+import img1 from './../CourseCard/Course.jpeg'
 
 
 
@@ -33,7 +34,7 @@ function CourseCard() {
     />
     <CardMedia
       className={classes.media}
-      src={require('./Course.jpeg')}
+      image={img1}
       title="Course"
     />
 
