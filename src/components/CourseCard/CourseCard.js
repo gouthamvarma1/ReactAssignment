@@ -27,36 +27,21 @@ const useStyles = makeStyles((theme) => ({
 function CourseCard() {
     const classes = useStyles();
     return (
-    <Card className={classes.root}>
-    <CardHeader
-      title="Course Title"
-      subheader="Course subheader "
-    />
-    <CardMedia
-      className={classes.media}
-      image={img1}
-      title="Course"
-    />
-
-    <CardContent>
-      <Typography variant="body2" color="textSecondary" component="p">
-        This course offers ...
-      </Typography>
-    </CardContent>
-    <CardActions disableSpacing>
-    <IconButton aria-label="View Modules">
-        <ViewModuleIcon />
-      </IconButton>
-      <IconButton aria-label="Cumulative Marks">
-        <GradeIcon />
-      </IconButton>
-      <IconButton aria-label="Assignments">
-        <AssignmentIcon />
-      </IconButton>
-
-    </CardActions>
+      <Card className={classes.root}>
+      <CardHeader title="Course Title" subheader="Course subheader " />
+      <CardMedia className={classes.media} image={img1} title="Course" />
+      <CardContent>
+        <Typography variant="body2" color="textSecondary" component="p"> This course offers ... </Typography>
+      </CardContent>
+      <CardActions disableSpacing>
+        <IconButton aria-label="View Modules">
+          <ViewModuleIcon /> </IconButton>
+        <IconButton aria-label="Cumulative Marks">
+          <GradeIcon /> </IconButton>
+        <IconButton aria-label="Assignments">
+          <AssignmentIcon /> </IconButton>
+      </CardActions>
     </Card>
-
     );
 }
 
