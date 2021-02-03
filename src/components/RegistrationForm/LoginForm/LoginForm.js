@@ -13,6 +13,7 @@ import Link from '@material-ui/core/Link';
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
+import axios from "axios"
 const useStyles = makeStyles((theme) => ({
     root: {
         '& .MuiTextField-root': {
@@ -35,6 +36,26 @@ var uppercaseErrorMessage = ""
 var specialErrorMessage = ""
 var userNameError = ""
 var roleErrorMessage= ""
+
+
+function makeLoginCall() {
+  
+console.log("entered Post Request")
+
+axios.post('https://1e276d32-c6af-4b5b-bc9b-d988abd03ce4.mock.pstmn.io/login', {
+    firstName: ''+document.getElementById('userName'),
+    password: ''+document.getElementById('password'),
+    role: ''+document.getElementById('role'),
+
+  })
+  .then((response) => {
+    console.log(response);
+    alert(""+JSON.stringify(response.data));
+  }, (error) => {
+    console.log(error);
+  });
+
+}
 
 function validateEmail(email) {
     console.log("validationg email")
@@ -125,6 +146,7 @@ function validateRole()
 
 }
 function validateForm() {
+    
     clearErrorMessages()
     var email = document.getElementById('userName').value;
     var password = document.getElementById('password').value;
@@ -143,7 +165,23 @@ function validateForm() {
     document.getElementById("emailmsg").innerHTML = userNameError;
     validatePassword(password)
     validateRole()
+    console.log('role validation completed')
+    console.log(charLengthErrorMessage +lowercaseErrorMessage + uppercaseErrorMessage + specialErrorMessage + userNameError + roleErrorMessage)
+    if( areEqual(charLengthErrorMessage, lowercaseErrorMessage , uppercaseErrorMessage , specialErrorMessage , userNameError , roleErrorMessage))
+    {
+        console.log('entered login')
+        makeLoginCall()
+    }
+
 }
+function areEqual(){
+    var len = arguments.length;
+    for (var i = 1; i< len; i++){
+       if (arguments[i] === null || arguments[i] !== arguments[i-1])
+          return false;
+    }
+    return true;
+ }
 function LoginForm() {
 
     const classes = useStyles();
