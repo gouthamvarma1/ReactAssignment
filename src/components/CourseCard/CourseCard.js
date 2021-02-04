@@ -12,6 +12,8 @@ import ViewModuleIcon from '@material-ui/icons/ViewModule';
 import AssignmentIcon from '@material-ui/icons/Assignment';
 import img1 from './../CourseCard/Course.jpeg'
 import PropTypes from 'prop-types'
+import { Tooltip } from '@material-ui/core';
+
 
 
 
@@ -46,12 +48,16 @@ function CourseCard(props) {
         <Typography variant="body2" color="textSecondary" component="p">  </Typography>
       </CardContent>
       <CardActions disableSpacing>
+        <Tooltip title="Modules">
         <IconButton aria-label="View Modules">
           <ViewModuleIcon /> </IconButton>
+        </Tooltip>
         {/* <IconButton aria-label="Cumulative Marks">  
           <GradeIcon /> </IconButton> */}
+          <Tooltip title="Assignments">
         <IconButton aria-label="Assignments">
           <AssignmentIcon /> </IconButton>
+          </Tooltip>
       </CardActions>
     </Card>
     );

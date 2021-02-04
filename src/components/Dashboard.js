@@ -13,7 +13,6 @@ import Typography from "@material-ui/core/Typography";
 import CourseCard from './CourseCard/CourseCard';
 import Paper from '@material-ui/core/Paper';
 import axios from "axios";
-import PropTypes from 'prop-types'
 
 
 const useStyles = makeStyles((theme) => ({
@@ -30,32 +29,11 @@ const useStyles = makeStyles((theme) => ({
 
 
 
-// function GetCourseDetails(e) {
-  
-//   //create state variables
-// let [responseData,setResponseData] = React.useState('')
-//   console.log("Getting course details from API")
-  
+function GetCourseDetails(e) {
 
-//   // e.preventDefault()
-//   //fetches data
-  
-//   axios.get('https://1e276d32-c6af-4b5b-bc9b-d988abd03ce4.mock.pstmn.io//dept/123/courses', {
-//     })
-//     .then((response) => {
-//       console.log(response);
-//       setResponseData(response.data)
-//       // alert(""+JSON.stringify(response.data));
-//     }, (error) => {
-//       console.log(error);
-//     });
-  
-//   }
-function Dashboard (){
-
-  //GetCourseDetails()
-  //create state variables
+//create state variables
 let [responseData,setResponseData] = React.useState('')
+
 console.log("Getting course details from API")
 
 axios.get('https://1e276d32-c6af-4b5b-bc9b-d988abd03ce4.mock.pstmn.io//dept/123/courses', {
@@ -63,13 +41,19 @@ axios.get('https://1e276d32-c6af-4b5b-bc9b-d988abd03ce4.mock.pstmn.io//dept/123/
 .then((response) => {
   console.log(response);
   setResponseData(response.data)
-  // alert(""+JSON.stringify(response.data));
 }, (error) => {
   console.log(error);
 });
   
-  const classes = useStyles();
+return (responseData)
+  
+ }
+function Dashboard (){
 
+  const courseDetails =GetCourseDetails()
+  
+  const classes = useStyles();
+  let courseCredit =30;
   return (
       <div className={classes.root}>
        <Grid container spacing={3}>
@@ -77,7 +61,7 @@ axios.get('https://1e276d32-c6af-4b5b-bc9b-d988abd03ce4.mock.pstmn.io//dept/123/
             <Paper className={classes.paper} id="headertext">Dashboard</Paper>
           </Grid>
           <Grid item lg={3} sm={12}>
-            <CourseCard  name={responseData.course_name} credit="50"/>
+            <CourseCard  name={courseDetails.course_name} credit={courseCredit}/>
           </Grid>
           <Grid item lg={3} sm={12}>
             <CourseCard name="Web-Development1"/>
