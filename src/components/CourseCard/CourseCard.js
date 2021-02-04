@@ -11,6 +11,7 @@ import GradeIcon from '@material-ui/icons/Grade';
 import ViewModuleIcon from '@material-ui/icons/ViewModule';
 import AssignmentIcon from '@material-ui/icons/Assignment';
 import img1 from './../CourseCard/Course.jpeg'
+import PropTypes from 'prop-types'
 
 
 
@@ -24,20 +25,31 @@ const useStyles = makeStyles((theme) => ({
   },
   }));
 
-function CourseCard() {
+    CourseCard.propTypes = {
+    name:PropTypes.string.isRequired,
+    credit:PropTypes.number.isRequired
+    }
+  
+    CourseCard.defaultProps = {
+      
+    name: "Course Name",
+    credit: 100
+
+    }
+function CourseCard(props) {
     const classes = useStyles();
     return (
       <Card className={classes.root}>
-      <CardHeader title="Course Title" subheader="Course subheader " />
+      <CardHeader title={props.name} subheader= {"Total Credits : " + props.credit} />
       <CardMedia className={classes.media} image={img1} title="Course" />
       <CardContent>
-        <Typography variant="body2" color="textSecondary" component="p"> This course offers ... </Typography>
+        <Typography variant="body2" color="textSecondary" component="p">  </Typography>
       </CardContent>
       <CardActions disableSpacing>
         <IconButton aria-label="View Modules">
           <ViewModuleIcon /> </IconButton>
-        <IconButton aria-label="Cumulative Marks">
-          <GradeIcon /> </IconButton>
+        {/* <IconButton aria-label="Cumulative Marks">  
+          <GradeIcon /> </IconButton> */}
         <IconButton aria-label="Assignments">
           <AssignmentIcon /> </IconButton>
       </CardActions>
