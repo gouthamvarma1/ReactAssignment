@@ -25,8 +25,8 @@ const useStyles = makeStyles((theme) => ({
     color: theme.palette.text.primary,
     fontSize : 50
   },
+  
 }));
-
 
 
 function GetCourseDetails(e) {
@@ -41,6 +41,7 @@ axios.get('https://1e276d32-c6af-4b5b-bc9b-d988abd03ce4.mock.pstmn.io//dept/123/
 .then((response) => {
   console.log(response);
   setResponseData(response.data)
+
 }, (error) => {
   console.log(error);
 });
@@ -50,10 +51,27 @@ return (responseData)
  }
 function Dashboard (){
 
-  const courseDetails =GetCourseDetails()
-  
   const classes = useStyles();
   let courseCredit =30;
+  const courseDetails =GetCourseDetails();
+
+  if (courseDetails==null) 
+  return (
+    <div className={classes.root}>
+    <Grid container spacing={3}>
+       <Grid item lg={12} sm={12} id="header" >
+         <Paper className={classes.paper} id="headertext">Dashboard</Paper>
+         </Grid>
+
+         <Grid item lg={3} sm={10}>
+         <Paper className={classes.paper} id="message">No Courses Assigned</Paper>
+          </Grid> 
+          </Grid>
+
+</div>    
+  )
+else 
+ 
   return (
       <div className={classes.root}>
        <Grid container spacing={3}>
