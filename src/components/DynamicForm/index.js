@@ -1,6 +1,13 @@
 import React, { Component } from "react";
+
+import Button from '@material-ui/core/Button';
+import TextField from '@material-ui/core/TextField';
+import Input from '@material-ui/core/Input';
+
 import ReactDOM from "react-dom";
 import "./form.css";
+import { TextareaAutosize } from "@material-ui/core";
+import { Label } from "@material-ui/icons";
 
 export default class DynamicForm extends Component {
   state = {};
@@ -79,12 +86,13 @@ export default class DynamicForm extends Component {
       let props = m.props || {};
       let name = m.name;
       let value = m.value;
+      let label = m.label || m.name;
 
       let target = key;
       value = this.state[target] || "";
 
       let input = (
-        <input
+        <TextField
           {...props}
           className="form-input"
           type={type}
@@ -96,6 +104,44 @@ export default class DynamicForm extends Component {
           }}
         />
       );
+
+      if (type == "file") {
+        return (
+          <TextField
+          {...props}
+          className="form-input"
+          type={type}
+          key={key}
+          name={name}
+          value={value}
+          onChange={e => {
+            this.onChange(e, target);
+          }}
+          InputLabelProps={{
+            shrink: true,
+          }}
+        />
+        )
+      }
+      
+      if (type == "datetime-local") {
+        const today = new Date()
+        const tomorrow = new Date(today)
+        tomorrow.setDate(tomorrow.getDate() + 1)
+        return (
+          <TextField
+            {...props}
+            id="datetime-local"
+            key={key}
+            label= {label}
+            type={type}
+            defaultValue={tomorrow.toDateString()}
+            InputLabelProps={{
+              shrink: true,
+            }}
+          />
+        )
+      }
 
       if (type == "radio") {
         input = m.options.map(o => {
@@ -206,7 +252,7 @@ export default class DynamicForm extends Component {
         >
           {this.renderForm()}
           <div className="form-actions">
-            <button type="submit">submit</button>
+            <Button type="submit">Submit</Button>
           </div>
         </form>
       </div>

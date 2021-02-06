@@ -1,9 +1,9 @@
-import React  from "react";
+import React from "react";
 import "./AddAssignmentFormComponent.css";
 import DynamicForm from "../DynamicForm";
 import { Button } from "@material-ui/core";
 
-class AddAssignmentFormComponent extends React.Component {
+class AddQuizComponent extends React.Component {
     state = {
         // any server data to maintain state 
         data: [
@@ -100,7 +100,7 @@ class AddAssignmentFormComponent extends React.Component {
         return (
             <div className="App" >
                 <div className="form-actions">
-                    <Button onClick = {this.onNewClick} type = "submit">NEW</Button>
+                    <Button onClick={this.onNewClick} type="submit">NEW</Button>
                 </div>
                 <DynamicForm
                     key={this.state.current.id}
@@ -109,7 +109,7 @@ class AddAssignmentFormComponent extends React.Component {
                     defaultValues={this.state.current}
                     model={[
                         { key: "assignmentTitle", label: "AssignmentTitle", props: { required: true } },
-                        { key: "assignmentDiscription", label: "AssignmentDiscription" , props: { required: true } },
+                        { key: "assignmentDiscription", label: "AssignmentDiscription", props: { required: true } },
                         { key: "marks", label: "Marks", type: "number" },
                         {
                             key: "attempts",
@@ -153,7 +153,7 @@ class AddAssignmentFormComponent extends React.Component {
                             key: "uplodDocument",
                             label: "Upload Document",
                             type: "file",
-                            name:"uplodDocument"
+                            name: "uplodDocument"
                         },
                         // { key: "qualification", label: "Qualification" },
                         // {
@@ -190,4 +190,4 @@ class AddAssignmentFormComponent extends React.Component {
         );
     }
 }
-export default  AddAssignmentFormComponent;
+export default AddAssignmentFormComponent;
