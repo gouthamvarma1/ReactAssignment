@@ -63,27 +63,24 @@ function  LmsDashBoard (){
   let courseCredit =30;
   const courseDetails=123
   {/*const courseDetails =GetCourseDetails();*/}
-
-
  
   return (
     <div id='dahboard'> 
       <div className={classes.root}>
-       <Grid container spacing={3}>
-          <Grid item lg={12} sm={12} id="header" >
-            <Paper className={classes.paper} id="headertext">Dashboard</Paper>
+       <Grid container spacing={5}>
+          <Grid item lg={4} sm={4} id="header" >
           </Grid>
-          <Grid item lg={10} sm={10}>
+          <Grid item lg={4} sm={12}>
             {/* <CourseCard  name={courseDetails.course_name} credit={courseCredit}/> */}
-            <CourseCard  name="WEB-Development" credit="50"/>
+            <CourseCard  name="Web" credit="50"/>
           </Grid>
-          <Grid item lg={10} sm={10}>
+          <Grid item lg={4} sm={12}>
             {/* <CourseCard name={courseDetails.course_name} credit={courseCredit}/> */}
-            <CourseCard  name="Mobile-Development" credit="100"/>
+            <CourseCard  name="Mobile" credit="30"/>
           </Grid> 
-          <Grid item lg={10} sm={10}>
+          <Grid item lg={4} sm={12}>
             {/* <CourseCard name={courseDetails.course_name} credit={courseCredit}/> */}
-            <CourseCard  name="CI/CD" credit="100"/>
+            <CourseCard  name="CI/CD" credit="20"/>
           </Grid> 
         </Grid>
 
