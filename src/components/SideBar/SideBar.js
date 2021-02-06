@@ -134,7 +134,7 @@ export default function SideBar() {
                         <MenuIcon />
                     </IconButton>
                     <Typography variant="h6" noWrap>
-                        Learning Management Software
+                        Learning Management Software -{(window.location.href.split('/').pop())}
           </Typography>
                 </Toolbar>
             </AppBar>
