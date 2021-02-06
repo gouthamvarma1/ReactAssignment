@@ -65,7 +65,7 @@ function  LmsDashBoard (){
   {/*const courseDetails =GetCourseDetails();*/}
  
   return (
-    <div id='dahboard'> 
+    <div id='dashboard'> 
       <div className={classes.root}>
        <Grid container spacing={5}>
           <Grid item lg={4} sm={4} id="header" >

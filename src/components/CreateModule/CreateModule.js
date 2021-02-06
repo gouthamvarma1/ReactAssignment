@@ -12,6 +12,7 @@ const useStyles = makeStyles((theme) => ({
 			margin: theme.spacing(1),
 			width: 600,
 		},
+	cancelButton: {margin: 30}
 	},
 
 }));
@@ -62,7 +63,9 @@ function validateForm() {
     else {
     
     console.log('Validation completed')
-        callModuleCreateService(name,description,topics)
+	   // callModuleCreateService(name,description,topics)
+	   alert("The module is created");
+	   
     }
 }
 
@@ -75,17 +78,6 @@ function CreateModule() {
 
 	return (
 		<form className={classes.root} noValidate autoComplete="off" id="CreateModule">
-			<div>
-
-			</div>
-			<div>
-				<header>
-					<h1 >
-						Create Module
-            </h1>
-				</header>
-				<br />
-			</div>
 			<div>
 				<label htmlFor="Name">Module Name</label>
 			</div>
@@ -109,6 +101,7 @@ function CreateModule() {
 			
 			<ButtonGroup color="primary" aria-label="outlined primary button group" variant="contained">
 				<Button onClick={validateForm} id="createButton">Create</Button>
+				<Button href = '/lmsDashBoard' id="cancelButton">Cancel</Button>
 			</ButtonGroup>
 		
 			<div>
