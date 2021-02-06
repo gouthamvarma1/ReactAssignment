@@ -18,7 +18,7 @@ import axios from "axios";
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
-    padding: theme.spacing(4),
+    padding: theme.spacing(10),
   },
   paper: {
     padding: theme.spacing(2),
@@ -86,15 +86,15 @@ else
           <Grid item lg={12} sm={12} id="header" >
             <Paper className={classes.paper} id="headertext">Dashboard</Paper>
           </Grid>
-          <Grid item lg={3} sm={12}>
+          <Grid item lg={10} sm={10}>
             {/* <CourseCard  name={courseDetails.course_name} credit={courseCredit}/> */}
             <CourseCard  name="WEB-Development" credit="50"/>
           </Grid>
-          <Grid item lg={3} sm={12}>
+          <Grid item lg={10} sm={10}>
             {/* <CourseCard name={courseDetails.course_name} credit={courseCredit}/> */}
             <CourseCard  name="Mobile-Development" credit="100"/>
           </Grid> 
-          <Grid item lg={3} sm={12}>
+          <Grid item lg={10} sm={10}>
             {/* <CourseCard name={courseDetails.course_name} credit={courseCredit}/> */}
             <CourseCard  name="CI/CD" credit="100"/>
           </Grid> 

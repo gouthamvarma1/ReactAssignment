@@ -7,10 +7,10 @@ import axios from "axios"
 
 
 const useStyles = makeStyles((theme) => ({
-	root: {
+	root: {padding: theme.spacing(10),
 		'& .MuiTextField-root': {
 			margin: theme.spacing(1),
-			width: 200,
+			width: 600,
 		},
 	},
 
@@ -80,7 +80,7 @@ function CreateModule() {
 			</div>
 			<div>
 				<header>
-					<h1>
+					<h1 >
 						Create Module
             </h1>
 				</header>
@@ -90,19 +90,19 @@ function CreateModule() {
 				<label htmlFor="Name">Module Name</label>
 			</div>
 			<div>
-				<TextField required id="moduleName" label="Module Name" type="Module Name" defaultValue="" variant="outlined" 
+				<TextField required id="moduleName" label="Module Name" type="Module Name" defaultValue="" variant="outlined"  fullWidth
 				onChange={event => {setName(event.target.value)}}/> </div>
 			<div>
 				<label htmlFor="Description">Module Description</label>
 			</div>
 			<div>
-				<TextField required id="moduleDescription" label="Module description" defaultValue="" multiline variant="outlined" 
+				<TextField required id="moduleDescription" label="Module description" defaultValue="" multiline variant="outlined"  fullWidth
 				onChange={event => {setDescription(event.target.value)}}/> </div>
 			<div>
 				<label htmlFor="Topics Covered">Topics </label>
 			</div>
 			<div>
-				<TextField id="topics" label="Topics covered" defaultValue="" multiline variant="outlined" 
+				<TextField id="topics" label="Topics covered" defaultValue="" multiline variant="outlined" fullWidth
 				onChange={event => {setTopics(event.target.value)}}/> </div>
 			<div>
 				<br /> </div>

@@ -10,16 +10,21 @@ import IconButton from '@material-ui/core/IconButton';
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    padding: theme.spacing(4),
+    padding: theme.spacing(30),
     flexGrow: 1,
   },
   paper: {
-    padding: theme.spacing(2),
+    padding: theme.spacing(10),
     textAlign: 'center',
     color: theme.palette.text.primary,
     fontSize : 50
   },
-  
+  IconButton: {
+    padding: theme.spacing(8),
+    textAlign: 'center',
+    color: theme.palette.text.primary,
+    fontSize : 50
+  },
 }));
 
 
@@ -33,10 +38,9 @@ function ViewModules (){
           <Grid item lg={12} sm={12} id="header" >
             <Paper className={classes.paper} id="headertext">Module List</Paper>
           </Grid>
-          <Grid item lg={3} sm={12} >
+          <Grid item lg={12} sm={12} >
         <IconButton aria-label="Create new module" href = 'http://localhost:3000/CreateModule'
         //onClick={() => { window.location.href = 'http://localhost:3000/CreateModule'; }}
-        
         >Create New Module
           <AddCircleIcon /> </IconButton>
           </Grid>

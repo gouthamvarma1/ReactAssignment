@@ -30,7 +30,7 @@ import HelpIcon from '@material-ui/icons/Help';
 import StudentTable from '../StudentTable/StudentTable';
 import LmsDashBoard from '../LmsDashBoard/LmsDashBoard';
 import ViewModules from '../ViewModules/ViewModules';
-
+import CreateModule from '../CreateModule/CreateModule';
 
 
 
@@ -196,6 +196,7 @@ export default function SideBar() {
                 {((window.location.href).includes('LmsDashBoard')) ? <LmsDashBoard /> : null }
                 {((window.location.href).includes('students')) ? <StudentTable /> : null }
                 {((window.location.href).includes('modules')) ? <ViewModules /> : null }
+                {((window.location.href).includes('CreateModule')) ? <CreateModule /> : null }
                 </div>
             </main>
         </div>
