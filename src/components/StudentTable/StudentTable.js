@@ -17,6 +17,9 @@ import KeyboardArrowRight from "@material-ui/icons/KeyboardArrowRight";
 import LastPageIcon from "@material-ui/icons/LastPage";
 import TableHead from "@material-ui/core/TableHead";
 import { withStyles } from "@material-ui/core/styles";
+import Button from '@material-ui/core/Button';
+import CancelIcon from '@material-ui/icons/Cancel';
+import { Link } from "react-router-dom";
 
 const useStyles1 = makeStyles((theme) => ({
   root: {
@@ -27,7 +30,7 @@ const useStyles1 = makeStyles((theme) => ({
 
 const StyledTableCell = withStyles((theme) => ({
   head: {
-    backgroundColor: "#0971f1",
+    backgroundColor: "#3f51b5",
     color: theme.palette.common.white
   },
   body: {
@@ -55,6 +58,11 @@ function TablePaginationActions(props) {
   const handleLastPageButtonClick = (event) => {
     onChangePage(event, Math.max(0, Math.ceil(count / rowsPerPage) - 1));
   };
+
+  const handleCancelPageButtonClick = (event) => {
+    window.location.href="/lmsDashBoard";
+  };
+
 
   return (
     <div className={classes.root}>
@@ -93,6 +101,13 @@ function TablePaginationActions(props) {
         aria-label="last page"
       >
         {theme.direction === "rtl" ? <FirstPageIcon /> : <LastPageIcon />}
+      </IconButton>
+
+      <IconButton
+        onClick={handleCancelPageButtonClick}
+        aria-label="cancel"
+      >
+        {theme.direction === "rtl" ? <CancelIcon /> : <CancelIcon />}
       </IconButton>
     </div>
   );
@@ -155,9 +170,10 @@ export default function CustomPaginationActionsTable() {
     setPage(0);
   };
 
+
   return (
     <TableContainer component={Paper} id="table">
-      <Table className={classes.table} aria-label="custom pagination table">
+      <Table className={classes.table} aria-label="custom pagination table" style={{ width: 1200 }}>
         <TableHead>
           <TableRow>
             <StyledTableCell align="center">ID</StyledTableCell>
@@ -209,9 +225,15 @@ export default function CustomPaginationActionsTable() {
               onChangeRowsPerPage={handleChangeRowsPerPage}
               ActionsComponent={TablePaginationActions}
             />
+         
+         
           </TableRow>
+          
         </TableFooter>
       </Table>
+      
     </TableContainer>
+
+    
   );
 }

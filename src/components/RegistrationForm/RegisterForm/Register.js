@@ -264,7 +264,7 @@ function Register() {
             </div>
             <ButtonGroup color="primary" aria-label="outlined primary button group" variant="contained">
                 <Button>Register</Button>
-                <Button>Contact us</Button>
+                <Button href="/login">Cancel</Button>
 
             </ButtonGroup>
 

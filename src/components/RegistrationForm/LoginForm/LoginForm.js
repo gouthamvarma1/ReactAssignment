@@ -35,25 +35,30 @@ var lowercaseErrorMessage = ""
 var uppercaseErrorMessage = ""
 var specialErrorMessage = ""
 var userNameError = ""
-var roleErrorMessage= ""
+var roleErrorMessage = ""
 
 
 function makeLoginCall() {
-  
-console.log("entered Post Request")
 
-axios.post('https://1e276d32-c6af-4b5b-bc9b-d988abd03ce4.mock.pstmn.io/login', {
-    firstName: ''+document.getElementById('userName'),
-    password: ''+document.getElementById('password'),
-    role: ''+document.getElementById('role'),
+    console.log("entered Post Request")
 
-  })
-  .then((response) => {
-    console.log(response);
-    alert(""+JSON.stringify(response.data));
-  }, (error) => {
-    console.log(error);
-  });
+    axios.post('https://1e276d32-c6af-4b5b-bc9b-d988abd03ce4.mock.pstmn.io/login', {
+        firstName: '' + document.getElementById('userName'),
+        password: '' + document.getElementById('password'),
+        role: '' + document.getElementById('role'),
+
+    })
+        .then((response) => {
+            console.log(response);
+            alert("" + JSON.stringify(response.data));
+        }, (error) => {
+            console.log(error);
+        });
+
+    if (areEqual(charLengthErrorMessage, lowercaseErrorMessage, uppercaseErrorMessage, specialErrorMessage, userNameError, roleErrorMessage)) {
+        window.location.href = "/lmsDashBoard"
+    }
+
 
 }
 
@@ -63,6 +68,10 @@ function validateEmail(email) {
     return re.test(String(email).toLowerCase());
 }
 
+
+function navigateToRegister() {
+    window.location.href = '/register'
+}
 function validatePassword() {
 
     var password = document.getElementById("password")
@@ -120,7 +129,7 @@ function validatePassword() {
 }
 
 function clearErrorMessages() {
-    roleErrorMessage =""
+    roleErrorMessage = ""
     charLengthErrorMessage = ""
     lowercaseErrorMessage = ""
     uppercaseErrorMessage = ""
@@ -135,18 +144,16 @@ function clearErrorMessages() {
 
 }
 
-function validateRole()
-{
-    var role=document.getElementById("role").innerHTML
-    if(role.includes("<span>"))
-        {
-            roleErrorMessage="Please select the appropriate role"
-        }
-        document.getElementById("roleError").innerHTML = roleErrorMessage;
+function validateRole() {
+    var role = document.getElementById("role").innerHTML
+    if (role.includes("<span>")) {
+        roleErrorMessage = "Please select the appropriate role"
+    }
+    document.getElementById("roleError").innerHTML = roleErrorMessage;
 
 }
 function validateForm() {
-    
+
     clearErrorMessages()
     var email = document.getElementById('userName').value;
     var password = document.getElementById('password').value;
@@ -166,22 +173,21 @@ function validateForm() {
     validatePassword(password)
     validateRole()
     console.log('role validation completed')
-    console.log(charLengthErrorMessage +lowercaseErrorMessage + uppercaseErrorMessage + specialErrorMessage + userNameError + roleErrorMessage)
-    if( areEqual(charLengthErrorMessage, lowercaseErrorMessage , uppercaseErrorMessage , specialErrorMessage , userNameError , roleErrorMessage))
-    {
+    console.log(charLengthErrorMessage + lowercaseErrorMessage + uppercaseErrorMessage + specialErrorMessage + userNameError + roleErrorMessage)
+    if (areEqual(charLengthErrorMessage, lowercaseErrorMessage, uppercaseErrorMessage, specialErrorMessage, userNameError, roleErrorMessage)) {
         console.log('entered login')
         makeLoginCall()
     }
 
 }
-function areEqual(){
+function areEqual() {
     var len = arguments.length;
-    for (var i = 1; i< len; i++){
-       if (arguments[i] === null || arguments[i] !== arguments[i-1])
-          return false;
+    for (var i = 1; i < len; i++) {
+        if (arguments[i] === null || arguments[i] !== arguments[i - 1])
+            return false;
     }
     return true;
- }
+}
 function LoginForm() {
 
     const classes = useStyles();
@@ -247,13 +253,19 @@ function LoginForm() {
             <ButtonGroup color="primary" aria-label="outlined primary button group" variant="contained">
                 <Button onClick={validateForm} id="loginButton">Login</Button>
             </ButtonGroup>
-            <div>
+            <div id="links">
                 <Link
                     component="button"
                     variant="body2"
-                    onClick={validatePassword}>
+                    onClick={null}>
                     Forgot Password
 </Link>
+                <Link
+                    component="button"
+                    variant="body2"
+                    onClick={null}>
+
+                    <a href="/register">Register</a></Link>
             </div>
             <div>
                 <p id="emailmsg"></p>

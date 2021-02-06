@@ -71,7 +71,9 @@ function RegisterForm() {
             </div>
 
             <div>
+            <div>
                 <label htmlFor="Full Name">Full Name</label>
+                </div>
                 <TextField
                     id="FullName"
                     label="FirstName LastName"
@@ -80,7 +82,9 @@ function RegisterForm() {
                 />
             </div>
             <div>
+            <div>
                 <label htmlFor="email@domain.com">Email address</label>
+            </div>
                 <TextField
                     id="userNameR"
                     label="email@domain.com"
@@ -89,7 +93,9 @@ function RegisterForm() {
                 />
             </div>
             <div>
+            <div>
                 <label htmlFor="email@domain.com">Password</label>
+        </div>
                 <TextField
                     id="passwordR"
                     label="password"
@@ -98,7 +104,9 @@ function RegisterForm() {
                     variant="outlined"
                 />
 
+<div>
                 <label htmlFor="email@domain.com">Re-enter Password</label>
+                </div>
                 <TextField
                     id="passwordRen"
                     label="password"
@@ -138,10 +146,9 @@ function RegisterForm() {
                     <FormHelperText>Required</FormHelperText>
                 </FormControl>
             </div>
-            <ButtonGroup color="primary" aria-label="outlined primary button group" variant="contained">
+            <ButtonGroup color="primary" aria-label="outlined primary button group" variant="contained" id="buttonGroup">
                 <Button>Register</Button>
-                <Button>Contact us</Button>
-
+                <Button href="/login">Back To Login</Button>
             </ButtonGroup>
 
         </form>
