@@ -28,6 +28,7 @@ import HistoryIcon from '@material-ui/icons/History';
 import TheatersIcon from '@material-ui/icons/Theaters';
 import HelpIcon from '@material-ui/icons/Help';
 import StudentTable from '../StudentTable/StudentTable';
+import LmsDashBoard from '../LmsDashBoard/LmsDashBoard';
 
 
 
@@ -190,9 +191,10 @@ export default function SideBar() {
                 </List>
             </Drawer>
             <main className={classes.content}>
-                <div className={classes.toolbar} />
-                <StudentTable />
-             
+                <div className={classes.toolbar} >
+                {((window.location.href).includes('LmsDashBoard')) ? <LmsDashBoard /> : null }
+                {((window.location.href).includes('sttudents')) ? <StudentTable /> : null }
+                </div>
             </main>
         </div>
     );
