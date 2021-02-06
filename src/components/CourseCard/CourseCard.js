@@ -49,7 +49,7 @@ function CourseCard(props) {
       </CardContent>
       <CardActions disableSpacing>
         <Tooltip title="Modules">
-        <IconButton aria-label="View Modules" href = 'http://localhost:3000/ViewModules'>
+        <IconButton aria-label="View Modules" href = 'http://localhost:3000/modules'>
           <ViewModuleIcon /> </IconButton>
         </Tooltip>
         {/* <IconButton aria-label="Cumulative Marks">  
