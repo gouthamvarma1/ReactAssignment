@@ -24,13 +24,19 @@ return (
             <Route path="/students" exact={true}>
             <SideBar />
             </Route>
-            <Route path="/LmsDashBoard" exact={true}>
+            <Route path="/lmsDashBoard" exact={true}>
             <SideBar />
             </Route>
             <Route path="/modules" exact={true}>
             <SideBar />
             </Route>
-            <Route path="/CreateModule" exact={true}>
+            <Route path="/createModule" exact={true}>
+            <SideBar />
+            </Route>
+            <Route path="/addQuiz" exact={true}>
+            <SideBar />
+            </Route>
+            <Route path="/addAssignment" exact={true}>
             <SideBar />
             </Route>
           </Switch>

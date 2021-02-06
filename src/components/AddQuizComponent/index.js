@@ -1,5 +1,5 @@
 import React from "react";
-import "./AddAssignmentFormComponent.css";
+import "./AddQuizComponent.css";
 import DynamicForm from "../DynamicForm";
 import { Button } from "@material-ui/core";
 
@@ -190,4 +190,4 @@ class AddQuizComponent extends React.Component {
         );
     }
 }
-export default AddAssignmentFormComponent;
+export default AddQuizComponent;

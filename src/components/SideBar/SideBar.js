@@ -31,7 +31,8 @@ import StudentTable from '../StudentTable/StudentTable';
 import LmsDashBoard from '../LmsDashBoard/LmsDashBoard';
 import ViewModules from '../ViewModules/ViewModules';
 import CreateModule from '../CreateModule/CreateModule';
-
+import AddAssignmentComponent from '../AddAssignmentComponent';
+import AddQuizComponent from '../AddQuizComponent'
 
 
 const drawerWidth = 240;
@@ -193,10 +194,12 @@ export default function SideBar() {
             </Drawer>
             <main className={classes.content}>
                 <div className={classes.toolbar} >
-                {((window.location.href).includes('LmsDashBoard')) ? <LmsDashBoard /> : null }
+                {((window.location.href).includes('lmsDashBoard')) ? <LmsDashBoard /> : null }
                 {((window.location.href).includes('students')) ? <StudentTable /> : null }
                 {((window.location.href).includes('modules')) ? <ViewModules /> : null }
-                {((window.location.href).includes('CreateModule')) ? <CreateModule /> : null }
+                {((window.location.href).includes('createModule')) ? <CreateModule /> : null }
+                {((window.location.href).includes('addQuiz')) ? <AddQuizComponent /> : null }
+                {((window.location.href).includes('addAssignment')) ? <AddAssignmentComponent /> : null }
                 </div>
             </main>
         </div>
