@@ -10,6 +10,8 @@ import Typography from '@material-ui/core/Typography';
 import GradeIcon from '@material-ui/icons/Grade';
 import ViewModuleIcon from '@material-ui/icons/ViewModule';
 import AssignmentIcon from '@material-ui/icons/Assignment';
+import AssignmentTurnedInIcon from '@material-ui/icons/AssignmentTurnedIn';
+import PeopleIcon from '@material-ui/icons/People';
 import img1 from './../CourseCard/Course.jpeg'
 import PropTypes from 'prop-types'
 import { Tooltip } from '@material-ui/core';
@@ -48,15 +50,23 @@ function CourseCard(props) {
         <Typography variant="body2" color="textSecondary" component="p">  </Typography>
       </CardContent>
       <CardActions disableSpacing>
-        <Tooltip title="Modules">
-        <IconButton aria-label="View Modules" href = 'http://localhost:3000/modules'>
+        <Tooltip title="createModule">
+        <IconButton aria-label="Create Module" href = '/createModule1'>
           <ViewModuleIcon /> </IconButton>
         </Tooltip>
         {/* <IconButton aria-label="Cumulative Marks">  
           <GradeIcon /> </IconButton> */}
-          <Tooltip title="Assignments">
-        <IconButton aria-label="Assignments" href = 'http://localhost:3000/ViewAssignments'>
+          <Tooltip title="AddAssignment">
+        <IconButton aria-label="Add Assignment" href = '/addAssignment'>
           <AssignmentIcon /> </IconButton>
+          </Tooltip>
+          <Tooltip title="AddQuiz">
+        <IconButton aria-label="Add Quiz" href = '/addQuiz'>
+          <AssignmentTurnedInIcon /> </IconButton>
+          </Tooltip>
+          <Tooltip title="ViewStudents">
+        <IconButton aria-label="View Students" href = '/students'>
+          <PeopleIcon /> </IconButton>
           </Tooltip>
       </CardActions>
     </Card>
