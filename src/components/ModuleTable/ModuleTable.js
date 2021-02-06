@@ -160,10 +160,10 @@ function ModuleTable() {
                 {row.name}
               </TableCell>
               <TableCell style={{ width: 160 }} align="center">
-                {row.email}
+                {row.description}
               </TableCell>
               <TableCell style={{ width: 160 }} align="center">
-                {row.gender}
+                {row.topics}
               </TableCell>
             </TableRow>
           ))}

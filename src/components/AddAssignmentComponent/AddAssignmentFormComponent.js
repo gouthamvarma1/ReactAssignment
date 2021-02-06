@@ -1,7 +1,7 @@
 import React from "react";
 import DynamicForm from "./components/DynamicForm";
 
-class AddAssignmentFormComponent extends Component {
+class AddAssignmentFormComponent extends React.Component {
     state = {
         // any server data to maintain state 
         data: [

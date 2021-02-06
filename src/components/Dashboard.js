@@ -25,6 +25,12 @@ const useStyles = makeStyles((theme) => ({
     color: theme.palette.text.primary,
     fontSize : 50
   },
+  message: {
+    padding: theme.spacing(2),
+    textAlign: 'left',
+    color: theme.palette.text.primary,
+    fontSize : 20
+  },
   
 }));
 
@@ -54,7 +60,7 @@ function Dashboard (){
   const classes = useStyles();
   let courseCredit =30;
   const courseDetails =GetCourseDetails();
-
+ 
   if (courseDetails==null) 
   return (
     <div className={classes.root}>
@@ -63,8 +69,8 @@ function Dashboard (){
          <Paper className={classes.paper} id="headertext">Dashboard</Paper>
          </Grid>
 
-         <Grid item lg={3} sm={10}>
-         <Paper className={classes.paper} id="message">No Courses Assigned</Paper>
+         <Grid item lg={12} sm={12}>
+         <Paper className={classes.message} id="message">No Courses Assigned</Paper>
           </Grid> 
           </Grid>
 
