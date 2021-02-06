@@ -1,5 +1,6 @@
-import React from "react";
-import DynamicForm from "./components/DynamicForm";
+import React  from "react";
+import "./AddAssignmentFormComponent.css";
+import DynamicForm from "../DynamicForm";
 
 class AddAssignmentFormComponent extends React.Component {
     state = {
@@ -105,53 +106,66 @@ class AddAssignmentFormComponent extends React.Component {
                 <DynamicForm
                     key={this.state.current.id}
                     className="form"
-                    title="Registration"
+                    title="Add Assignmant"
                     defaultValues={this.state.current}
                     model={[
-                        { key: "name", label: "Name", props: { required: true } },
-                        { key: "age", label: "Age", type: "number" },
+                        { key: "assignmentTitle", label: "AssignmentTitle", props: { required: true } },
+                        { key: "assignmentDiscription", label: "AssignmentDiscription", props: { required: true } },
+                        { key: "marks", label: "Marks", type: "number" },
                         {
-                            key: "rating",
-                            label: "Rating",
+                            key: "attempts",
+                            label: "Attempts",
                             type: "number",
                             props: { min: 0, max: 5 }
                         },
                         {
-                            key: "gender",
-                            label: "Gender",
+                            key: "SubmitionType",
+                            label: "SubmitionType",
                             type: "radio",
                             options: [
-                                { key: "male", label: "Male", name: "gender", value: "male" },
                                 {
-                                    key: "female",
-                                    label: "Female",
-                                    name: "gender",
-                                    value: "female"
-                                }
-                            ]
-                        },
-                        { key: "qualification", label: "Qualification" },
-                        {
-                            key: "city",
-                            label: "City",
-                            type: "select",
-                            value: "Kerala",
-                            options: [
-                                { key: "mumbai", label: "Mumbai", value: "Mumbai" },
-                                { key: "bangalore", label: "Bangalore", value: "Bangalore" },
-                                { key: "kerala", label: "Kerala", value: "Kerala" }
-                            ]
-                        },
-                        {
-                            key: "skills",
-                            label: "Skills",
-                            type: "checkbox",
-                            options: [
-                                { key: "reactjs", label: "ReactJS", value: "reactjs" },
-                                { key: "angular", label: "Angular", value: "angular" },
-                                { key: "vuejs", label: "VueJS", value: "vuejs" }
+                                    key: "folder",
+                                    label: "Folder",
+                                    name: "SubmitionType",
+                                    value: "folder"
+                                },
+                                {
+                                    key: "Link",
+                                    label: "Link",
+                                    name: "SubmitionType",
+                                    value: "Link"
+                                },
+                                {
+                                    key: "file",
+                                    label: "File",
+                                    name: "SubmitionType",
+                                    value: "file"
+                                },
+
                             ]
                         }
+                        // { key: "qualification", label: "Qualification" },
+                        // {
+                        //     key: "city",
+                        //     label: "City",
+                        //     type: "select",
+                        //     value: "Kerala",
+                        //     options: [
+                        //         { key: "mumbai", label: "Mumbai", value: "Mumbai" },
+                        //         { key: "bangalore", label: "Bangalore", value: "Bangalore" },
+                        //         { key: "kerala", label: "Kerala", value: "Kerala" }
+                        //     ]
+                        // },
+                        // {
+                        //     key: "skills",
+                        //     label: "Skills",
+                        //     type: "checkbox",
+                        //     options: [
+                        //         { key: "reactjs", label: "ReactJS", value: "reactjs" },
+                        //         { key: "angular", label: "Angular", value: "angular" },
+                        //         { key: "vuejs", label: "VueJS", value: "vuejs" }
+                        //     ]
+                        // }
                     ]}
                     onSubmit={model => {
                         this.onSubmit(model);
@@ -165,52 +179,4 @@ class AddAssignmentFormComponent extends React.Component {
         );
     }
 }
-export default AddAssignmentFormComponent;
-
-
-
-
-
-
-
-
-
-
-// class AddAssignmentFormComponent extends Component{
-//     state = {
-//         fields: [
-//             {
-//             placeholder: "Assignment Name",
-//             name: "AssignmetName",
-//             input_type: "text",
-//             required:true
-//             },
-//             {
-//                 placeholder: "Assignment Discription",
-//                 name: "AssignmetDiscription",
-//                 input_type: "big_text",
-//                 required: true
-//             },
-//             {
-//                 placeholder: "Assignment Type",
-//                 name: "AssignmetType",
-//                 input_type: "dropdown",
-//                 required: true,
-//                 values: [
-//                     "Grader",
-//                     "Not Graded",
-//                     "Others"
-//                 ]
-//             },
-//         ]
-//     }
-//     submitForm = event => {
-//         const { fields, ...inputFields } = this.state;
-//         event.preventDefault();
-//     };
-//     _handleChange = event => {
-//         this.setState({
-//             [event.currentTarget.name]: event.currentTarget.value
-//         });
-//     }
-// }
+export default  AddAssignmentFormComponent;
