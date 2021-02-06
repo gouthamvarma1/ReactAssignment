@@ -99,9 +99,9 @@ class AddAssignmentFormComponent extends React.Component {
         });
         return (
             <div className="App" >
-                <div className="form-actions">
+                {/* <div className="form-actions">
                     <Button onClick = {this.onNewClick} type = "submit">NEW</Button>
-                </div>
+                </div> */}
                 <DynamicForm
                     key={this.state.current.id}
                     className="form"
@@ -181,6 +181,7 @@ class AddAssignmentFormComponent extends React.Component {
                     onSubmit={model => {
                         this.onSubmit(model);
                     }}
+                    
                 />
 
                 {/* <table border="1">

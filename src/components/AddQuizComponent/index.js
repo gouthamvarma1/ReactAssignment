@@ -105,11 +105,11 @@ class AddQuizComponent extends React.Component {
                 <DynamicForm
                     key={this.state.current.id}
                     className="form"
-                    title="Add Assignmant"
+                    title="Add Quiz Details"
                     defaultValues={this.state.current}
                     model={[
-                        { key: "assignmentTitle", label: "AssignmentTitle", props: { required: true } },
-                        { key: "assignmentDiscription", label: "AssignmentDiscription", props: { required: true } },
+                        { key: "QuizTitle", label: "Quiz Title", props: { required: true } },
+                        { key: "QuizDiscription", label: "Quiz Discription", props: { required: true } },
                         { key: "marks", label: "Marks", type: "number" },
                         {
                             key: "attempts",
@@ -148,6 +148,12 @@ class AddQuizComponent extends React.Component {
                             label: "Date Of Submission",
                             type: "datetime-local",
                             name: "Date Of Submission"
+                        },
+                        {
+                            key: "Total hrs for Atempting",
+                            label: "Time for Atempting",
+                            type: "number",
+                            name: "timeforAtempting"
                         },
                         {
                             key: "uplodDocument",
