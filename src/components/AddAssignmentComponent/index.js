@@ -56,6 +56,7 @@ class AddAssignmentFormComponent extends React.Component {
             data: [model, ...data],
             current: {} // todo
         });
+        alert("Assignment is created")
     };
 
     onEdit = id => {
