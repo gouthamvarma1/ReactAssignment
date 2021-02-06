@@ -11,6 +11,9 @@ import Button from '@material-ui/core/Button';
 import ButtonGroup from '@material-ui/core/ButtonGroup';
 import "date-fns";
 import DateFnsUtils from "@date-io/date-fns";
+import AppBar from "@material-ui/core/AppBar";
+import Toolbar from "@material-ui/core/Toolbar";
+import Typography from "@material-ui/core/Typography";
 
 import Grid from "@material-ui/core/Grid";
 import {
@@ -57,8 +60,15 @@ function RegisterForm() {
         setAge(event.target.value);
     };
     return (
+        
         <form className={classes.root} noValidate autoComplete="off" id='RegisterForm'>
-
+<div>
+                <AppBar>
+                    <Toolbar>
+                        <Typography variant="h6">Taxila Public School - Learning Management Software</Typography>
+                    </Toolbar>
+                </AppBar>
+            </div>
 
             <div>
                 <label htmlFor="Full Name">Full Name</label>

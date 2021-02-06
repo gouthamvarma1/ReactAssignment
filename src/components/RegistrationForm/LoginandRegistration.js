@@ -7,6 +7,7 @@ import Grid from '@material-ui/core/Grid';
 import LoginForm from './LoginForm/LoginForm';
 import RegisterForm from './RegisterForm/RegisterForm';
 import schoolGif from './happy-elearning.gif'
+import Register from './RegisterForm/Register';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -27,18 +28,16 @@ function LoginAndRegistartion() {
         <div className={classes.root}>
           <Grid container spacing={3}>
             <Grid item lg={12} sm={12} id="header" >
-              <Paper className={classes.paper} id="headertext">Welcome To Taxila Public School Learning Management System</Paper>
+              <Paper className={classes.paper} >Welcome To Taxila Public School Learning Management System</Paper>
             </Grid>
-            <Grid item lg={6} sm={12}>
-              <Paper className={classes.paper}>LOGIN FORM
-              <LoginForm />
+            <Grid item lg={12} sm={12} id ='body'>
+              <Paper className={classes.paper}>{((window.location.href).includes('login')) ? "Login" : "Registration"}
+              <div>  
+              {((window.location.href).includes('login')) ? <LoginForm /> : <RegisterForm></RegisterForm>}
+              </div>
               </Paper>
             </Grid>
-            <Grid item lg={6} sm={12}>
-              <Paper className={classes.paper}>REGISTRATION FORM
-              <RegisterForm />
-              </Paper>
-            </Grid> 
+        
             <Grid item lg={12} sm={12} id="footer">
               <Paper className={classes.paper} id='footerPaper'> © Copyright 2021 Group1-  Bits Pilani.       
               </Paper>
