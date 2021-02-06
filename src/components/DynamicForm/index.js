@@ -108,22 +108,22 @@ export default class DynamicForm extends Component {
       if (type == "file") {
         return (
           <TextField
-          {...props}
-          className="form-input"
-          type={type}
-          key={key}
-          name={name}
-          value={value}
-          onChange={e => {
-            this.onChange(e, target);
-          }}
-          InputLabelProps={{
-            shrink: true,
-          }}
-        />
+            {...props}
+            className="form-input"
+            type={type}
+            key={key}
+            name={name}
+            value={value}
+            onChange={e => {
+              this.onChange(e, target);
+            }}
+            InputLabelProps={{
+              shrink: true,
+            }}
+          />
         )
       }
-      
+
       if (type == "datetime-local") {
         const today = new Date()
         const tomorrow = new Date(today)
@@ -134,7 +134,7 @@ export default class DynamicForm extends Component {
             {...props}
             id="datetime-local"
             key={key}
-            label= {label}
+            label={label}
             type={type}
             defaultValue={tomorrow.toDateString()}
             InputLabelProps={{
@@ -240,11 +240,11 @@ export default class DynamicForm extends Component {
   };
 
   render() {
-    let title = this.props.title || "Dynamic Form";
+    // let title = this.props.title || "Dynamic Form";
 
     return (
       <div className={this.props.className}>
-        <h3 className="form-title">{title}</h3>
+        {/* <h3 className="form-title">{title}</h3> */}
         <form
           className="dynamic-form"
           onSubmit={e => {
@@ -254,6 +254,7 @@ export default class DynamicForm extends Component {
           {this.renderForm()}
           <div className="form-actions">
             <Button type="submit">Submit</Button>
+            <Button href='/lmsDashBoard' type="cancel" id="cancelButton">Cancel</Button>
           </div>
         </form>
       </div>

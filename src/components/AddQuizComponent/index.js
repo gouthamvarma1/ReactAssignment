@@ -56,6 +56,7 @@ class AddQuizComponent extends React.Component {
             data: [model, ...data],
             current: {} // todo
         });
+        alert("Quiz Submited");
     };
 
     onEdit = id => {
@@ -99,23 +100,21 @@ class AddQuizComponent extends React.Component {
         });
         return (
             <div className="App" >
-                <div className="form-actions">
-                    <Button onClick={this.onNewClick} type="submit">NEW</Button>
-                </div>
+
                 <DynamicForm
                     key={this.state.current.id}
                     className="form"
                     title="Add Quiz Details"
                     defaultValues={this.state.current}
                     model={[
-                        { key: "QuizTitle", label: "Quiz Title", props: { required: true } },
-                        { key: "QuizDiscription", label: "Quiz Discription", props: { required: true } },
-                        { key: "marks", label: "Marks", type: "number" },
+                        { key: "QuizTitle", label: "Quiz Title", props: { required: true, variant: "outlined" } },
+                        { key: "QuizDiscription", label: "Quiz Discription", props: { required: true, variant: "outlined" } },
+                        { key: "marks", label: "Marks", type: "number", props: { variant: "outlined" } },
                         {
                             key: "attempts",
                             label: "Attempts",
                             type: "number",
-                            props: { min: 0, max: 5 }
+                            props: { min: 0, max: 5, variant: "outlined" }
                         },
                         {
                             key: "SubmitionType",
@@ -147,19 +146,23 @@ class AddQuizComponent extends React.Component {
                             key: "DateOfSubmission",
                             label: "Date Of Submission",
                             type: "datetime-local",
-                            name: "Date Of Submission"
+                            name: "Date Of Submission",
+                            props: { variant: "outlined" }
                         },
                         {
                             key: "Total hrs for Atempting",
                             label: "Time for Atempting",
                             type: "number",
-                            name: "timeforAtempting"
+                            name: "timeforAtempting",
+                            props: { variant: "outlined" }
                         },
                         {
                             key: "uplodDocument",
                             label: "Upload Document",
                             type: "file",
-                            name: "uplodDocument"
+                            name: "uplodDocument",
+                            props: { variant: "outlined" }
+
                         },
                         // { key: "qualification", label: "Qualification" },
                         // {

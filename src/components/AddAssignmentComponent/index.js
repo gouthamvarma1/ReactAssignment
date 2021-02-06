@@ -1,4 +1,4 @@
-import React  from "react";
+import React from "react";
 import "./AddAssignmentFormComponent.css";
 import DynamicForm from "../DynamicForm";
 import { Button } from "@material-ui/core";
@@ -75,28 +75,29 @@ class AddAssignmentFormComponent extends React.Component {
     };
     render() {
 
-        let data = this.state.data.map(d => {
-            return (
-                <tr key={d.id}>
-                    <td>{d.name}</td>
-                    <td>{d.age}</td>
-                    <td>{d.qualification}</td>
-                    <td>{d.gender}</td>
-                    <td>{d.rating}</td>
-                    <td>{d.city}</td>
-                    <td>{d.skills && d.skills.join(",")}</td>
-                    <td>
-                        <button
-                            onClick={() => {
-                                this.onEdit(d.id);
-                            }}
-                        >
-                            edit
-            </button>
-                    </td>
-                </tr>
-            );
-        });
+        // let data = this.state.data.map(d => {
+        //     return (
+        //         <tr key={d.id}>
+        //             <td>{d.name}</td>
+        //             <td>{d.age}</td>
+        //             <td>{d.qualification}</td>
+        //             <td>{d.gender}</td>
+        //             <td>{d.rating}</td>
+        //             <td>{d.city}</td>
+        //             <td>{d.skills && d.skills.join(",")}</td>
+        //             <td>
+        //                 <button
+        //                     onClick={() => {
+        //                         this.onEdit(d.id);
+        //                     }}
+        //                 >
+        //                     edit
+        //                 </button>
+        //             </td>
+        //         </tr>
+        //     );
+        // });
+
         return (
             <div className="App" >
                 {/* <div className="form-actions">
@@ -108,18 +109,18 @@ class AddAssignmentFormComponent extends React.Component {
                     title="Add Assignmant"
                     defaultValues={this.state.current}
                     model={[
-                        { key: "assignmentTitle", label: "AssignmentTitle", props: { required: true } },
-                        { key: "assignmentDiscription", label: "AssignmentDiscription" , props: { required: true } },
-                        { key: "marks", label: "Marks", type: "number" },
+                        { key: "assignmentTitle", label: "Assignment Title", props: { required: true, variant: "outlined" } },
+                        { key: "assignmentDiscription", label: "Assignment Discription", props: { required: true, variant:"outlined" } },
+                        { key: "marks", label: "Marks", type: "number", props: { variant: "outlined"} },
                         {
                             key: "attempts",
                             label: "Attempts",
                             type: "number",
-                            props: { min: 0, max: 5 }
+                            props: { min: 0, max: 5, variant: "outlined"}
                         },
                         {
                             key: "SubmitionType",
-                            label: "SubmitionType",
+                            label: "Submition Type",
                             type: "radio",
                             options: [
                                 {
@@ -144,16 +145,18 @@ class AddAssignmentFormComponent extends React.Component {
                             ]
                         },
                         {
-                            key: "DateOfSubmission",
+                            key: "dateOfSubmission",
                             label: "Date Of Submission",
                             type: "datetime-local",
-                            name: "Date Of Submission"
+                            name: "Date Of Submission",
+                            props: { variant: "outlined" }
                         },
                         {
                             key: "uplodDocument",
                             label: "Upload Document",
                             type: "file",
-                            name:"uplodDocument"
+                            name: "uplodDocument",
+                            props: { variant: "outlined" }
                         },
                         // { key: "qualification", label: "Qualification" },
                         // {
@@ -181,7 +184,7 @@ class AddAssignmentFormComponent extends React.Component {
                     onSubmit={model => {
                         this.onSubmit(model);
                     }}
-                    
+
                 />
 
                 {/* <table border="1">
@@ -191,4 +194,4 @@ class AddAssignmentFormComponent extends React.Component {
         );
     }
 }
-export default  AddAssignmentFormComponent;
+export default AddAssignmentFormComponent;
