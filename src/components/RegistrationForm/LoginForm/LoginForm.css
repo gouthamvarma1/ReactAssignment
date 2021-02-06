@@ -1,7 +1,24 @@
 #LoginForm > div    {    
-         
+    
+     
 
 }
+#links
+{
+
+    display: flex;
+  justify-content: space-between;
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 10px 0;
+}
+
+Link{
+    width: 50px;
+    height: 50px;
+    background: black;
+  }
+
 
 p{
     color: #cc0000;
