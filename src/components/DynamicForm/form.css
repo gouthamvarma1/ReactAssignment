@@ -1,11 +1,4 @@
-.dynamic-form {
-    box-shadow: 2px 6px 8px grey;
-    margin-bottom: 5px;
-    padding-top: 5px;
-    padding-bottom: 5px;
-    margin: 10px 2px;
-    max-width: 600px;
-}
+
 .dynamic-form .form-group {
     padding: .5em;
     display: flex;
@@ -16,7 +9,6 @@
 
 .dynamic-form .form-label {
     text-align: left;
-    color: #2E86C1;
 }
 .dynamic-form .form-input{
     margin-top: 5px;
@@ -62,16 +54,5 @@
 
 .form-actions {
     display: flex;
-}
-.form-actions button {
-    width: 80px;
+}   
 
-    line-height: 1.5em;
-    background-color: #3498DB;
-    color: white;
-    border-radius: 4px;
-    border:0;
-    margin-top: 15px;
-    margin-left: 5px;
-    margin-bottom:5px;
-}
