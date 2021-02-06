@@ -18,6 +18,7 @@ import axios from "axios";
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
+    padding: theme.spacing(4),
   },
   paper: {
     padding: theme.spacing(2),
@@ -55,6 +56,7 @@ axios.get('https://1e276d32-c6af-4b5b-bc9b-d988abd03ce4.mock.pstmn.io//dept/123/
 return (responseData)
   
  }
+
 function LmsDashBoard (){
 
   const classes = useStyles();
@@ -85,13 +87,16 @@ else
             <Paper className={classes.paper} id="headertext">Dashboard</Paper>
           </Grid>
           <Grid item lg={3} sm={12}>
-            <CourseCard  name={courseDetails.course_name} credit={courseCredit}/>
+            {/* <CourseCard  name={courseDetails.course_name} credit={courseCredit}/> */}
+            <CourseCard  name="WEB-Development" credit="50"/>
           </Grid>
           <Grid item lg={3} sm={12}>
-            <CourseCard name="Web-Development1"/>
+            {/* <CourseCard name={courseDetails.course_name} credit={courseCredit}/> */}
+            <CourseCard  name="Mobile-Development" credit="100"/>
           </Grid> 
           <Grid item lg={3} sm={12}>
-            <CourseCard name="Web-Development2"/>
+            {/* <CourseCard name={courseDetails.course_name} credit={courseCredit}/> */}
+            <CourseCard  name="CI/CD" credit="100"/>
           </Grid> 
         </Grid>
 
