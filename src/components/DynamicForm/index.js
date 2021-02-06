@@ -6,7 +6,7 @@ import Input from '@material-ui/core/Input';
 
 import ReactDOM from "react-dom";
 import "./form.css";
-import { TextareaAutosize } from "@material-ui/core";
+import { ButtonGroup, TextareaAutosize } from "@material-ui/core";
 import { Label } from "@material-ui/icons";
 
 export default class DynamicForm extends Component {
@@ -253,8 +253,10 @@ export default class DynamicForm extends Component {
         >
           {this.renderForm()}
           <div className="form-actions">
+          <ButtonGroup color="primary" aria-label="outlined primary button group" variant="contained">
             <Button type="submit">Submit</Button>
             <Button href='/lmsDashBoard' type="cancel" id="cancelButton">Cancel</Button>
+            </ButtonGroup>
           </div>
         </form>
       </div>
