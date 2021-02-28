@@ -28,7 +28,7 @@ class AddAssignmentFormComponent extends React.Component {
             data: [model, ...data],
             current: { model } // todo
         });
-        alert("Assignment is created")
+        // alert("Assignment is created")
 
         // add 
         this.saveAssignmentCall(model);

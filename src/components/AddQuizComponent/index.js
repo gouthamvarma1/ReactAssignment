@@ -2,42 +2,11 @@ import React from "react";
 import "./AddQuizComponent.css";
 import DynamicForm from "../DynamicForm";
 import { Button } from "@material-ui/core";
-
+import axios from "axios"
 class AddQuizComponent extends React.Component {
     state = {
         // any server data to maintain state 
-        data: [
-            {
-                id: 1,
-                name: "a",
-                age: 29,
-                qualification: "B.Com",
-                rating: 3,
-                gender: "male",
-                city: "Kerala",
-                skills: ["reactjs", "angular", "vuejs"]
-            },
-            {
-                id: 2,
-                name: "b",
-                age: 35,
-                qualification: "B.Sc",
-                rating: 5,
-                gender: "female",
-                city: "Mumbai",
-                skills: ["reactjs", "angular"]
-            },
-            {
-                id: 3,
-                name: "c",
-                age: 42,
-                qualification: "B.E",
-                rating: 3,
-                gender: "female",
-                city: "Bangalore",
-                skills: ["reactjs"]
-            }
-        ],
+        data: [],
         current: {}
     };
 
@@ -56,8 +25,29 @@ class AddQuizComponent extends React.Component {
             data: [model, ...data],
             current: {} // todo
         });
-        alert("Quiz Submited");
+        // alert("Quiz Submited");
+        this.saveQuizCall(model)
     };
+
+    saveQuizCall(model) {
+
+        console.log("entered Post Request")
+
+        axios.post('http://127.0.0.1:8000/api/addquiz/quiz/', model, {
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        })
+            .then((response) => {
+                console.log(response);
+                alert("" + JSON.stringify(response.status));
+                if (response.status == 200 || response.status == 201) {
+                    window.location.href = "/lmsDashBoard"
+                }
+            }, (error) => {
+                console.log(error);
+            });
+    }
 
     onEdit = id => {
         let record = this.state.data.find(d => {
@@ -76,28 +66,28 @@ class AddQuizComponent extends React.Component {
     };
     render() {
 
-        let data = this.state.data.map(d => {
-            return (
-                <tr key={d.id}>
-                    <td>{d.name}</td>
-                    <td>{d.age}</td>
-                    <td>{d.qualification}</td>
-                    <td>{d.gender}</td>
-                    <td>{d.rating}</td>
-                    <td>{d.city}</td>
-                    <td>{d.skills && d.skills.join(",")}</td>
-                    <td>
-                        <button
-                            onClick={() => {
-                                this.onEdit(d.id);
-                            }}
-                        >
-                            edit
-            </button>
-                    </td>
-                </tr>
-            );
-        });
+        // let data = this.state.data.map(d => {
+        //     return (
+        //         <tr key={d.id}>
+        //             <td>{d.name}</td>
+        //             <td>{d.age}</td>
+        //             <td>{d.qualification}</td>
+        //             <td>{d.gender}</td>
+        //             <td>{d.rating}</td>
+        //             <td>{d.city}</td>
+        //             <td>{d.skills && d.skills.join(",")}</td>
+        //             <td>
+        //                 <button
+        //                     onClick={() => {
+        //                         this.onEdit(d.id);
+        //                     }}
+        //                 >
+        //                     edit
+        //     </button>
+        //             </td>
+        //         </tr>
+        //     );
+        // });
         return (
             <div className="App" >
 
@@ -150,10 +140,10 @@ class AddQuizComponent extends React.Component {
                             props: { variant: "outlined" }
                         },
                         {
-                            key: "Total hrs for Atempting",
-                            label: "Time for Atempting",
+                            key: "TotalhrsforAtempting",
+                            label: "Total hours for Atempting",
                             type: "number",
-                            name: "timeforAtempting",
+                            name: "TotalhrsforAtempting",
                             props: { variant: "outlined" }
                         },
                         {
