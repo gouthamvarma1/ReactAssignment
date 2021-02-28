@@ -22,12 +22,10 @@ function callModuleCreateService() {
   
 	console.log("entered Post Request")
 	
-	axios.post('https://1e276d32-c6af-4b5b-bc9b-d988abd03ce4.mock.pstmn.io//dept/123/course/123/module', {
-		name: ''+document.getElementById('moduleName'),
-		description: ''+document.getElementById('moduleDescription'),
-		topics: ''+document.getElementById('topics'),
-		
-	
+	axios.post('http://127.0.0.1:8000/api/course/modules/', {
+		name: ''+document.getElementById('moduleName').value,
+		description: ''+document.getElementById('moduleDescription').value,
+		topics: ''+document.getElementById('topics').value,
 	  })
 	  .then((response) => {
 		console.log(response);
@@ -63,8 +61,8 @@ function validateForm() {
     else {
     
     console.log('Validation completed')
-	   // callModuleCreateService(name,description,topics)
-	   alert("The module is created");
+	   callModuleCreateService(name,description,topics)
+	//    alert("The module is created");
 	   
     }
 }
