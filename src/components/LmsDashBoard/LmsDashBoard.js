@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from "react";
 import { makeStyles } from '@material-ui/core/styles';
 import CardHeader from '@material-ui/core/CardHeader'
 import CardActions from '@material-ui/core/CardActions'
@@ -40,21 +40,18 @@ function  LmsDashBoard (){
 
   const classes = useStyles();
   console.log("Inside LmsDashBoard")
-  // let courseCredit =30;
-  // const courseDetails=123
-  // var courseDetails =GetCourseDetails();
 
-  let [responseData,setResponseData] = React.useState([])
+  let [responseData,setResponseData] = useState([])
 
-
-console.log("Getting course details from API")
-
+console.log("API call")
+useEffect(() => {
 axios.get('http://127.0.0.1:8000/api/course/courses/', {})
 .then((response) => {
   setResponseData(response.data)
 }, (error) => {
   console.log(error);
 });
+},[]);
   
  
   return (
@@ -78,7 +75,6 @@ axios.get('http://127.0.0.1:8000/api/course/courses/', {})
 
   
 }
-
 
 
 export default LmsDashBoard;
