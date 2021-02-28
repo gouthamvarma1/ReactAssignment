@@ -42,22 +42,28 @@ function makeLoginCall() {
 
     console.log("entered Post Request")
 
-    axios.post('https://1e276d32-c6af-4b5b-bc9b-d988abd03ce4.mock.pstmn.io/login', {
-        firstName: '' + document.getElementById('userName'),
-        password: '' + document.getElementById('password'),
-        role: '' + document.getElementById('role'),
+    axios.post('http://127.0.0.1:8000/api/auth/login', {
 
-    })
+        username: ('' + document.getElementById('userName').value).split('@')[0],
+        password: '' + document.getElementById('password').value,
+        role: '' + document.getElementById('role').value,
+
+    },{
+    headers: {
+        'Content-Type': 'application/json',
+    },}
+    )   
         .then((response) => {
             console.log(response);
-            alert("" + JSON.stringify(response.data));
+            alert("" + JSON.stringify(response.status));
+            if(response.status==200)
+                window.location.href = "/lmsDashBoard"
+            
         }, (error) => {
-            console.log(error);
+            console.log(error)
+            document.getElementById("msg1").innerHTML = "Unauthorized, Please check your username and password again";
         });
 
-    if (areEqual(charLengthErrorMessage, lowercaseErrorMessage, uppercaseErrorMessage, specialErrorMessage, userNameError, roleErrorMessage)) {
-        window.location.href = "/lmsDashBoard"
-    }
 
 
 }
