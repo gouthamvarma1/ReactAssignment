@@ -31,8 +31,9 @@ function callModuleCreateService() {
 		console.log(response);
 		alert(""+JSON.stringify(response.data));
 	  }, (error) => {
-		console.log(error);
-	  });
+		console.log(error)
+		document.getElementById("errorMsg").innerHTML = "Duplicate Module Name - please create a new one";
+	});
 	
 	}
 
@@ -62,8 +63,6 @@ function validateForm() {
     
     console.log('Validation completed')
 	   callModuleCreateService(name,description,topics)
-	//    alert("The module is created");
-	   
     }
 }
 
@@ -105,6 +104,7 @@ function CreateModule() {
 			<div>
                 <p id="noNameMsg"></p>
                 <p id="noDescriptionMsg"></p>
+				<p id="errorMsg"></p>
             </div>
 		</form>
 
