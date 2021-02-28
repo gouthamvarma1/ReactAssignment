@@ -140,6 +140,9 @@ export default class DynamicForm extends Component {
             InputLabelProps={{
               shrink: true,
             }}
+            onChange={e => {
+              this.onChange(e, target);
+            }}
           />
         )
       }
