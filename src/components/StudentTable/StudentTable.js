@@ -165,7 +165,7 @@ const getJson = async () => {
 
 console.log(getJson())
 
-const useStyles2 = makeStyles({
+const useStyles2 = makeStyles({   
   table: {
     minWidth: 500
   }

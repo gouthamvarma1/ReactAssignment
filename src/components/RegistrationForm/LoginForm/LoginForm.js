@@ -44,7 +44,7 @@ function makeLoginCall() {
 
     axios.post('http://127.0.0.1:8000/api/auth/login', {
 
-        username: ('' + document.getElementById('userName').value).split('@')[0],
+        username: ('' + document.getElementById('userName').value),
         password: '' + document.getElementById('password').value,
         role: '' + document.getElementById('role').value,
 

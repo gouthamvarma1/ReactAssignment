@@ -34,26 +34,38 @@ var specialErrorMessage = ""
 var userNameError = ""
 var roleErrorMessage = ""
 
+function getrole()
+{
+    if (document.getElementById('role').innerHTML=='Faculty' || document.getElementById('role').innerHTML=='Admin')
+    return true
+    else
+    return false        
+}
+
 function makeLoginCall() {
 
     console.log("entered Post Request")
 
-    axios.post('https://1e276d32-c6af-4b5b-bc9b-d988abd03ce4.mock.pstmn.io/login', {
-        firstName: '' + document.getElementById('userName'),
-        password: '' + document.getElementById('password'),
-        role: '' + document.getElementById('role'),
 
+    axios.post('http://127.0.0.1:8000/api/auth/register', {
+        username: '' + document.getElementById('userName').value,
+        email: '' + document.getElementById('userName').value,
+        password:  '' + document.getElementById('password').value,
+        is_staff: + getrole(),
+        date_joined: '' + document.getElementById('date').value + ' 06:00'
     })
         .then((response) => {
-            console.log(response);
+            console.log(response.status = "REgistration successful");
             alert("" + JSON.stringify(response.data));
         }, (error) => {
             console.log(error);
         });
 
     if (areEqual(charLengthErrorMessage, lowercaseErrorMessage, uppercaseErrorMessage, specialErrorMessage, userNameError, roleErrorMessage)) {
-        window.location.href = "/lmsDashBoard"
+        alert("Registration Successful. Press Ok to continue")
+       
     }
+    
 
 
 }
