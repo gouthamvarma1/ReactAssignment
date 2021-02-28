@@ -1,7 +1,7 @@
 import React from "react";
 import "./StudentTable.css"
 import PropTypes from "prop-types";
-import { makeStyles, useTheme } from "@material-ui/core/styles";
+import { makeStyles, responsiveFontSizes, useTheme } from "@material-ui/core/styles";
 import Table from "@material-ui/core/Table";
 import TableBody from "@material-ui/core/TableBody";
 import TableCell from "@material-ui/core/TableCell";
@@ -20,7 +20,8 @@ import { withStyles } from "@material-ui/core/styles";
 import Button from '@material-ui/core/Button';
 import CancelIcon from '@material-ui/icons/Cancel';
 import { Link } from "react-router-dom";
-
+import axios from "axios"
+var responseData;
 const useStyles1 = makeStyles((theme) => ({
   root: {
     flexShrink: 0,
@@ -38,7 +39,28 @@ const StyledTableCell = withStyles((theme) => ({
   }
 }))(TableCell);
 
+function getStudentDetails(e) {
+
+  //create state variables
+  console.log("Getting course details from API")
+axios.get('http://127.0.0.1:8000/api/admin/stu/students', {
+  },{
+    headers: {
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '*'    
+    },})
+  .then((response) => {
+    responseData=response.data
+    
+  }, (error) => {
+    console.log(error);
+  });
+  
+  
+   }
+
 function TablePaginationActions(props) {
+  
   const classes = useStyles1();
   const theme = useTheme();
   const { count, page, rowsPerPage, onChangePage } = props;
@@ -123,29 +145,25 @@ TablePaginationActions.propTypes = {
 function createData(id, name, email, gender) {
   return { id, name, email, gender };
 }
-
 const rows = [
-  createData("Student1", "Student Name1", "Student1@taxila.com", "MALE"),
-  createData("Student2", "Student Name2", "Student2@taxila.com", "MALE"),
-  createData("Student3", "Student Name3", "Student3@taxila.com", "MALE"),
-  createData("Student4", "Student Name4", "Student4@taxila.com", "MALE"),
-  createData("Student5", "Student Name5", "Student5@taxila.com", "MALE"),
-  createData("Student6", "Student Name6", "Student6@taxila.com", "MALE"),
-  createData("Student7", "Student Name7", "Student7@taxila.com", "MALE"),
-  createData("Student8", "Student Name7", "Student8@taxila.com", "MALE"),
-  createData("Student9", "Student Name8", "Student9@taxila.com", "MALE"),
-  createData("Student11", "Student Name10", "Student10@taxila.com", "MALE"),
-  createData("Student11", "Student Name11", "Student11@taxila.com", "MALE"),
-  createData("Student12", "Student Name12", "Student12@taxila.com", "MALE"),
-  createData("Student13", "Student Name13", "Student13@taxila.com", "MALE"),
-  createData("Student14", "Student Name14", "Student14@taxila.com", "MALE"),
-  createData("Student15", "Student Name15", "Student15@taxila.com", "MALE"),
-  createData("Student16", "Student Name16", "Student16@taxila.com", "MALE"),
-  createData("Student17", "Student Name17", "Student17@taxila.com", "MALE"),
-  createData("Student18", "Student Name18", "Student18@taxila.com", "MALE"),
-  createData("Student19", "Student Name19", "Student19@taxila.com", "MALE"),
-  createData("Student20", "Student Name20", "Student20@taxila.com", "MALE")
 ];
+
+const getJson = async () => {
+  const response = await axios.get('http://127.0.0.1:8000/api/admin/stu/students/');
+  // Here i can see the json normallys
+  responseData=response.data
+  console.log(responseData.length)
+  console.log(responseData[0].id)
+  for (var i = 0; i < responseData.length; i++) {
+   rows.push(createData(responseData[i].id,responseData[i].name,responseData[i].email,responseData[i].gender))
+  }
+  responseData.forEach(element => {
+    console.log(responseData.id)
+  });
+
+}
+
+console.log(getJson())
 
 const useStyles2 = makeStyles({
   table: {
