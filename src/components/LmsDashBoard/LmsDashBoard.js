@@ -36,33 +36,26 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-function GetCourseDetails(e) {
+function  LmsDashBoard (){
 
-//create state variables
-let [responseData,setResponseData] = React.useState('')
+  const classes = useStyles();
+  console.log("Inside LmsDashBoard")
+  // let courseCredit =30;
+  // const courseDetails=123
+  // var courseDetails =GetCourseDetails();
+
+  let [responseData,setResponseData] = React.useState([])
+
 
 console.log("Getting course details from API")
 
-
-axios.get('http://127.0.0.1:8000/api/course/courses/1', {})
+axios.get('http://127.0.0.1:8000/api/course/courses/', {})
 .then((response) => {
-  console.log(response);
   setResponseData(response.data)
-
 }, (error) => {
   console.log(error);
 });
   
-return (responseData)
-  
- }
-
-function  LmsDashBoard (){
-
-  const classes = useStyles();
-  // let courseCredit =30;
-  // const courseDetails=123
-  const courseDetails =GetCourseDetails();
  
   return (
     <div id='dashboard'> 
@@ -70,24 +63,22 @@ function  LmsDashBoard (){
        <Grid container spacing={5}>
           <Grid item lg={4} sm={4} id="header" >
           </Grid>
+          {responseData.map(course => (
+    
           <Grid item lg={4} sm={12}>
-            <CourseCard  name={courseDetails.name} credit={courseDetails.credit}/>
-            {/* <CourseCard  name="Web" credit="50"/> */}
-          </Grid>
-          <Grid item lg={4} sm={12}>
-           {/* <CourseCard name={courseDetails[1].course_name} credit={courseDetails[1].credit}/> */}
-            <CourseCard  name="Mobile" credit="30"/> 
+            <CourseCard  name={course.name} credit={course.credit} />
           </Grid> 
-          <Grid item lg={4} sm={12}>
-          {/* <CourseCard name={courseDetails[2].course_name} credit={courseDetails[2].credit}/> */}
-             <CourseCard  name="CI/CD" credit="20"/> 
-          </Grid> 
+          ))}
         </Grid>
 
       </div>
 
       </div>
     );
+
+  
 }
+
+
 
 export default LmsDashBoard;
