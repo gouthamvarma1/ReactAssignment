@@ -43,8 +43,8 @@ let [responseData,setResponseData] = React.useState('')
 
 console.log("Getting course details from API")
 
-axios.get('https://5efbcbcc-a59e-43a7-acce-667ce3d7e825.mock.pstmn.io/dept/123/courses', {
-})
+
+axios.get('http://127.0.0.1:8000/api/course/courses/1', {})
 .then((response) => {
   console.log(response);
   setResponseData(response.data)
@@ -60,9 +60,9 @@ return (responseData)
 function  LmsDashBoard (){
 
   const classes = useStyles();
-  let courseCredit =30;
-  const courseDetails=123
-  {/*const courseDetails =GetCourseDetails();*/}
+  // let courseCredit =30;
+  // const courseDetails=123
+  const courseDetails =GetCourseDetails();
  
   return (
     <div id='dashboard'> 
@@ -71,16 +71,16 @@ function  LmsDashBoard (){
           <Grid item lg={4} sm={4} id="header" >
           </Grid>
           <Grid item lg={4} sm={12}>
-            {/* <CourseCard  name={courseDetails.course_name} credit={courseCredit}/> */}
-            <CourseCard  name="Web" credit="50"/>
+            <CourseCard  name={courseDetails.name} credit={courseDetails.credit}/>
+            {/* <CourseCard  name="Web" credit="50"/> */}
           </Grid>
           <Grid item lg={4} sm={12}>
-            {/* <CourseCard name={courseDetails.course_name} credit={courseCredit}/> */}
-            <CourseCard  name="Mobile" credit="30"/>
+           {/* <CourseCard name={courseDetails[1].course_name} credit={courseDetails[1].credit}/> */}
+            <CourseCard  name="Mobile" credit="30"/> 
           </Grid> 
           <Grid item lg={4} sm={12}>
-            {/* <CourseCard name={courseDetails.course_name} credit={courseCredit}/> */}
-            <CourseCard  name="CI/CD" credit="20"/>
+          {/* <CourseCard name={courseDetails[2].course_name} credit={courseDetails[2].credit}/> */}
+             <CourseCard  name="CI/CD" credit="20"/> 
           </Grid> 
         </Grid>
 
