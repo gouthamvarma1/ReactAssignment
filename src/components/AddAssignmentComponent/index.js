@@ -2,12 +2,13 @@ import React from "react";
 import "./AddAssignmentFormComponent.css";
 import DynamicForm from "../DynamicForm";
 import { Button } from "@material-ui/core";
+import axios from "axios"
 
 class AddAssignmentFormComponent extends React.Component {
     state = {
         // any server data to maintain state 
         data: [
-            
+
         ],
         current: {}
     };
@@ -25,10 +26,34 @@ class AddAssignmentFormComponent extends React.Component {
 
         this.setState({
             data: [model, ...data],
-            current: {model} // todo
+            current: { model } // todo
         });
         alert("Assignment is created")
+
+        // add 
+        this.saveAssignmentCall(model);
+
     };
+
+    saveAssignmentCall(model) {
+
+        console.log("entered Post Request")
+
+        axios.post('http://127.0.0.1:8000/api/eval/assignment/', model, {
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        })
+            .then((response) => {
+                console.log(response);
+                alert("" + JSON.stringify(response.status));
+                if (response.status == 200 || response.status == 201)
+                    window.location.href = "/lmsDashBoard"
+
+            }, (error) => {
+                console.log(error);
+            });
+    }
 
     onEdit = id => {
         let record = this.state.data.find(d => {
@@ -82,13 +107,13 @@ class AddAssignmentFormComponent extends React.Component {
                     defaultValues={this.state.current}
                     model={[
                         { key: "assignmentTitle", label: "Assignment Title", props: { required: true, variant: "outlined" } },
-                        { key: "assignmentDiscription", label: "Assignment Discription", props: { required: true, variant:"outlined" } },
-                        { key: "marks", label: "Marks", type: "number", props: { variant: "outlined"} },
+                        { key: "assignmentDiscription", label: "Assignment Discription", props: { required: true, variant: "outlined" } },
+                        { key: "marks", label: "Marks", type: "number", props: { variant: "outlined" } },
                         {
                             key: "attempts",
                             label: "Attempts",
                             type: "number",
-                            props: { min: 0, max: 5, variant: "outlined"}
+                            props: { min: 0, max: 5, variant: "outlined" }
                         },
                         {
                             key: "SubmitionType",
