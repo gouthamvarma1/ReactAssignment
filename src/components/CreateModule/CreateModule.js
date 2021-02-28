@@ -30,6 +30,8 @@ function callModuleCreateService() {
 	  .then((response) => {
 		console.log(response);
 		alert(""+JSON.stringify(response.data));
+		if (response.status == 200 || response.status == 201)
+                    window.location.href = "/lmsDashBoard"
 	  }, (error) => {
 		console.log(error)
 		document.getElementById("errorMsg").innerHTML = "Duplicate Module Name - please create a new one";
@@ -44,6 +46,7 @@ function validateForm() {
 	moduleDescriptionError =""
 	document.getElementById("noNameMsg").innerHTML = "";
 	document.getElementById("noDescriptionMsg").innerHTML = "";
+	document.getElementById("errorMsg").innerHTML = "";
 	
     var name = document.getElementById('moduleName').value;
 	var description = document.getElementById('moduleDescription').value;
