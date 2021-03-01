@@ -30,7 +30,7 @@ return (
             <Route path="/modules" exact={true}>
             <SideBar />
             </Route>
-            <Route path="/createModule1" exact={true}>
+            <Route path="/createModule" exact={true}>
             <SideBar />
             </Route>
             <Route path="/addQuiz" exact={true}>

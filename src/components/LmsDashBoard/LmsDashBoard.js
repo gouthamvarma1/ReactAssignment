@@ -80,7 +80,7 @@ axios.get('http://127.0.0.1:8000/api/course/courses/', {})
           {responseData.map(course => (
     
           <Grid item lg={4} sm={12}>
-            <CourseCard  name={course.name} credit={course.credit} />
+            <CourseCard id={course.id} name={course.name} credit={course.credit} />
           </Grid> 
           ))}
         </Grid>

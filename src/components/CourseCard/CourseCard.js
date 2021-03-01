@@ -42,16 +42,17 @@ const useStyles = makeStyles((theme) => ({
     }
 function CourseCard(props) {
     const classes = useStyles();
+    console.log ("the course id is "+ props.id)
     return (
       <Card className={classes.root}>
-      <CardHeader title={props.name} subheader= {"Total Credits : " + props.credit} />
+      <CardHeader title= {props.name} subheader= {"Total Credits : " + props.credit} />
       <CardMedia className={classes.media} image={img1} title="Course" />
       <CardContent>
         <Typography variant="body2" color="textSecondary" component="p">  </Typography>
       </CardContent>
       <CardActions disableSpacing>
         <Tooltip title="createModule">
-        <IconButton aria-label="Create Module" href = '/createModule1'>
+        <IconButton aria-label="Create Module" href = '/createModule'>
           <ViewModuleIcon /> </IconButton>
         </Tooltip>
         {/* <IconButton aria-label="Cumulative Marks">  
