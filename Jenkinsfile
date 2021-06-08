@@ -5,7 +5,6 @@ pipeline {
             steps {
             
                 sh "ls"
-                sh "which node"
                 sh "apt update"
                 sh "apt install nodejs"
                 sh "apt install npm"
