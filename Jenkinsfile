@@ -4,7 +4,7 @@ pipeline {
         stage("Build") {
             steps {
             
-                sh "ls usr/local/bin"
+                sh "ls /usr/local/bin"
                 sh "npm install"
                 sh "npm run build"
             }
