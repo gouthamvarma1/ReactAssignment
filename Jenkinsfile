@@ -5,10 +5,8 @@ pipeline {
             steps {
                 sh "pwd"
                 sh  "ls"
-                sh "node -v"
-                sh "npm -v"
-                sh "npm install"
-                sh "npm run build"
+                sh "/usr/local/opt/node@10/bin/npm install"
+                sh "/usr/local/opt/node@10/bin/npm run build"
             }
         }
         stage("Deploy") {
