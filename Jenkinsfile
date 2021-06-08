@@ -3,6 +3,8 @@ pipeline {
      stages {
         stage("Build") {
             steps {
+                sh "pwd"
+                sh  "ls"
                 sh "npm install"
                 sh "npm run build"
             }
