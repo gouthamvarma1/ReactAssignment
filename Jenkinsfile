@@ -13,7 +13,7 @@ pipeline {
             steps {
 
                 sh "echo $pwd"
-                sh "$pwd/workspace/frontend/build/./  s3://bitsgoufront --recursive"
+                sh "aws s3 cp $pwd/workspace/frontend/build/./  s3://bitsgoufront --recursive"
                 
             }
         }
