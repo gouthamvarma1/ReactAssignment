@@ -9,10 +9,12 @@ pipeline {
                 sh "npm run build"
             }
         }
-        stage("Deploy") {
+        stage("Deploy to s3") {
             steps {
-                sh "sudo rm -rf /var/www/jenkins-react-app"
-                sh "sudo cp -r ${WORKSPACE}/build/ /var/www/jenkins-react-app/"
+                
+                sh "echo $pwd"
+                sh "$pwd/build/./  s3://bitsgoufront --recursive"
+                
             }
         }
     }
