@@ -11,9 +11,9 @@ pipeline {
         }
         stage("Deploy to s3") {
             steps {
-                
+
                 sh "echo $pwd"
-                sh "$pwd/build/./  s3://bitsgoufront --recursive"
+                sh "$pwd/workspace/frontend/build/./  s3://bitsgoufront --recursive"
                 
             }
         }
