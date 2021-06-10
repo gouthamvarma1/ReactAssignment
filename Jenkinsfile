@@ -16,7 +16,7 @@ pipeline {
             steps {
 
                sh "echo pushing build to ec2 Instance"
-               sh "scp -i /home/ubuntu/keys/bits-ec2.pem  $pwd/workspace/frontend/build/./  ubuntu@{env.target-ec2}:/home/ubuntu/frontend/"
+               sh "scp -i /home/ubuntu/keys/bits-ec2.pem  $pwd/workspace/frontend/build/./  ubuntu@${env.target-ec2}:/home/ubuntu/frontend/"
                 
             }
         }
