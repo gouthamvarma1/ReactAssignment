@@ -17,6 +17,7 @@ pipeline {
 
                sh "echo pushing build to ec2 Instance"
                sh "scp -r  $pwd/workspace/frontend/build/  ubuntu@3.89.212.234:/home/ubuntu/frontend/"
+               sh "echo Pushed to ec2 Instance"
                 
             }
         }
@@ -24,7 +25,7 @@ pipeline {
         stage("Run Automation Suite") {
             steps {
             //curl -X POST http://USER:API_TOKEN@localhost:8080/job/test/build
-               sh"curl -X POST http://admin:114c39517508f981a90159215d03b3d222@a9d687ee36f6.ngrok.io/job/test/build"
+               sh "curl -X POST http://admin:114c39517508f981a90159215d03b3d222@a9d687ee36f6.ngrok.io/job/automation/build"
                 
             }
         }
