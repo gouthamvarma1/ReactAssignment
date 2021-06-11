@@ -23,8 +23,8 @@ pipeline {
 
         stage("Run Automation Suite") {
             steps {
-
-               sh"echo Need To Implement Automation"
+            //curl -X POST http://USER:API_TOKEN@localhost:8080/job/test/build
+               sh"curl -X POST http://admin:114c39517508f981a90159215d03b3d222@a9d687ee36f6.ngrok.io/job/test/build"
                 
             }
         }
