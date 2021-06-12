@@ -9,6 +9,16 @@ pipeline {
                 sh "npm -v"
                 sh "npm install"
                 sh "npm run build"
+                
+            }
+        }
+        stage("sonarqube quality") {
+            steps {
+
+            //ec2 instance need to have node js installed by default
+                sh "npm install --save-dev sonarqube-scanner"
+                sh "sudo  node sonarqube-scanner.js"
+                
             }
         }
 
