@@ -36,7 +36,7 @@ pipeline {
         stage("Run Automation Suite") {
             steps {
             //curl -X POST http://USER:API_TOKEN@localhost:8080/job/test/build
-               sh "curl -X POST http://admin:114c39517508f981a90159215d03b3d222@218517db7ab1.ngrok.io/job/automation/build"
+               sh "curl -X POST http://admin:114c39517508f981a90159215d03b3d222@3de818d6ab94.ngrok.io/job/automation/build"
                 
             }
         }
