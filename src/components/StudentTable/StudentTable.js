@@ -153,7 +153,7 @@ const getJson = async () => {
   // Here i can see the json normallys
   responseData=response.data
   console.log(responseData.length)
-  console.log(responseData[0].id)
+  // console.log(responseData[0].id)
   for (var i = 0; i < responseData.length; i++) {
    rows.push(createData(responseData[i].id,responseData[i].name,responseData[i].email,responseData[i].gender))
   }

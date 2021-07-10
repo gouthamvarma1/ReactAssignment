@@ -3,7 +3,10 @@ import "./AddQuizComponent.css";
 import DynamicForm from "../DynamicForm";
 import { Button } from "@material-ui/core";
 import axios from "axios"
+
+var responseData;
 class AddQuizComponent extends React.Component {
+
     state = {
         // any server data to maintain state 
         data: [],
@@ -29,26 +32,18 @@ class AddQuizComponent extends React.Component {
         this.saveQuizCall(model)
     };
 
-    saveQuizCall(model) {
-
-        console.log("entered Post Request")
-
-        axios.post('http://127.0.0.1:8000/api/addquiz/quiz/', model, {
+    sendEmailNotification(payload) {
+        axios.post('http://127.0.0.1:8001/api/students/sendEmail', payload, {
             headers: {
                 'Content-Type': 'application/json',
+                'Access-Control-Allow-Origin': '*'
             },
-        })
-            .then((response) => {
-                console.log(response);
-                alert("" + JSON.stringify(response.status));
-                if (response.status == 200 || response.status == 201) {
-                    window.location.href = "/lmsDashBoard"
-                }
-            }, (error) => {
-                console.log(error);
-            });
+        }).then((response) => {
+            console.log(response);
+        }, (error) => {
+            console.log(error);
+        });
     }
-
     onEdit = id => {
         let record = this.state.data.find(d => {
             return d.id == id;
@@ -58,6 +53,66 @@ class AddQuizComponent extends React.Component {
             current: record
         });
     };
+
+    getstudentsList() {
+        debugger
+        let students = [];
+        var respdata;
+        console.log("Getting student's list")
+        axios.get('http://127.0.0.1:8001/api/students/viewAllstudents/', {
+        }, {
+            headers: {
+                'Content-Type': 'application/json',
+                'Access-Control-Allow-Origin': '*'
+            },
+        }).then((response) => {
+                console.log(JSON.stringify(response))
+                // respdata = response.data
+            if (response.data != undefined && response.data != null) {
+                    (response.data).forEach(student => {
+                        if (student.status == 1) {
+                            let email = student.email
+                            // let status = student.status
+                            
+                            students.push( email )
+                        }
+                        
+                    });
+                let email = students.join();
+                let status = 1;
+                let payload = { email, status}
+                this.sendEmailNotification(payload)
+                }
+            }, (error) => {
+                console.log(error);
+            });      
+    }
+
+    saveQuizCall(model) {
+
+        this.getstudentsList();
+        console.log("entered Post Request")
+        setTimeout(function () {
+        }, 5000);
+
+        axios.post('http://127.0.0.1:8000/api/addquiz/quiz/', model, {
+            headers: {
+                'Content-Type': 'application/json',
+                'Access-Control-Allow-Origin': '*'
+            },
+        }).then((response) => {
+            console.log(response);
+            alert("" + JSON.stringify(response.status));
+            if (response.status == 200 || response.status == 201) {
+                // window.location.href = "/lmsDashBoard"
+            }
+        }, (error) => {
+            console.log(error);
+        });
+
+    }
+
+
 
     onNewClick = e => {
         this.setState({
