@@ -3,6 +3,11 @@ import "./AddAssignmentFormComponent.css";
 import DynamicForm from "../DynamicForm";
 import { Button } from "@material-ui/core";
 import axios from "axios"
+import properties from '../properties.js';
+
+
+const emailIp = properties.emailServerIp;
+const lmsIp = properties.lmsIp;
 
 class AddAssignmentFormComponent extends React.Component {
     state = {
@@ -35,11 +40,60 @@ class AddAssignmentFormComponent extends React.Component {
 
     };
 
+    sendEmailNotification(payload) {
+        axios.post(emailIp + '/api/students/sendEmailAssignment', payload, {
+            headers: {
+                'Content-Type': 'application/json',
+                'Access-Control-Allow-Origin': '*'
+            },
+        }).then((response) => {
+            console.log(response);
+        }, (error) => {
+            console.log(error);
+        });
+    }
+
+    getstudentsList() {
+        debugger
+        let students = [];
+        var respdata;
+        console.log("Getting student's list")
+        axios.get(emailIp + '/api/students/viewAllstudents', {
+        }, {
+            headers: {
+                'Content-Type': 'application/json',
+                'Access-Control-Allow-Origin': '*'
+            },
+        }).then((response) => {
+            console.log(JSON.stringify(response))
+            // respdata = response.data
+            if (response.data != undefined && response.data != null) {
+                (response.data).forEach(student => {
+                    if (student.status == 1) {
+                        let email = student.email
+                        // let status = student.status
+
+                        students.push(email)
+                    }
+
+                });
+                let email = students.join();
+                let status = 1;
+                let payload = { email, status }
+                this.sendEmailNotification(payload)
+            }
+        }, (error) => {
+            console.log(error);
+        });
+    }
+
+
     saveAssignmentCall(model) {
 
         console.log("entered Post Request")
+        this.getstudentsList();
 
-        axios.post('http://127.0.0.1:8000/api/eval/assignment/', model, {
+        axios.post(lmsIp + '/api/eval/assignment/', model, {
             headers: {
                 'Content-Type': 'application/json',
             },
@@ -49,7 +103,6 @@ class AddAssignmentFormComponent extends React.Component {
                 alert("" + JSON.stringify(response.status));
                 if (response.status == 200 || response.status == 201)
                     window.location.href = "/lmsDashBoard"
-
             }, (error) => {
                 console.log(error);
             });

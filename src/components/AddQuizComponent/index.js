@@ -3,7 +3,11 @@ import "./AddQuizComponent.css";
 import DynamicForm from "../DynamicForm";
 import { Button } from "@material-ui/core";
 import axios from "axios"
+import properties from '../properties.js';
 
+
+const emailIp = properties.emailServerIp;
+const lmsIp = properties.lmsIp;
 var responseData;
 class AddQuizComponent extends React.Component {
 
@@ -33,7 +37,7 @@ class AddQuizComponent extends React.Component {
     };
 
     sendEmailNotification(payload) {
-        axios.post('http://127.0.0.1:8001/api/students/sendEmail', payload, {
+        axios.post(emailIp + '/api/students/sendEmail', payload, {
             headers: {
                 'Content-Type': 'application/json',
                 'Access-Control-Allow-Origin': '*'
@@ -59,43 +63,41 @@ class AddQuizComponent extends React.Component {
         let students = [];
         var respdata;
         console.log("Getting student's list")
-        axios.get('http://127.0.0.1:8001/api/students/viewAllstudents/', {
+        axios.get(emailIp + '/api/students/viewAllstudents', {
         }, {
             headers: {
                 'Content-Type': 'application/json',
                 'Access-Control-Allow-Origin': '*'
             },
         }).then((response) => {
-                console.log(JSON.stringify(response))
-                // respdata = response.data
+            console.log(JSON.stringify(response))
+            // respdata = response.data
             if (response.data != undefined && response.data != null) {
-                    (response.data).forEach(student => {
-                        if (student.status == 1) {
-                            let email = student.email
-                            // let status = student.status
-                            
-                            students.push( email )
-                        }
-                        
-                    });
+                (response.data).forEach(student => {
+                    if (student.status == 1) {
+                        let email = student.email
+                        // let status = student.status
+
+                        students.push(email)
+                    }
+
+                });
                 let email = students.join();
                 let status = 1;
-                let payload = { email, status}
+                let payload = { email, status }
                 this.sendEmailNotification(payload)
-                }
-            }, (error) => {
-                console.log(error);
-            });      
+            }
+        }, (error) => {
+            console.log(error);
+        });
     }
 
     saveQuizCall(model) {
 
         this.getstudentsList();
         console.log("entered Post Request")
-        setTimeout(function () {
-        }, 5000);
 
-        axios.post('http://127.0.0.1:8000/api/addquiz/quiz/', model, {
+        axios.post(lmsIp + '/api/addquiz/quiz/', model, {
             headers: {
                 'Content-Type': 'application/json',
                 'Access-Control-Allow-Origin': '*'
@@ -104,15 +106,13 @@ class AddQuizComponent extends React.Component {
             console.log(response);
             alert("" + JSON.stringify(response.status));
             if (response.status == 200 || response.status == 201) {
-                // window.location.href = "/lmsDashBoard"
+                window.location.href = "/lmsDashBoard"
             }
         }, (error) => {
             console.log(error);
         });
 
     }
-
-
 
     onNewClick = e => {
         this.setState({
@@ -121,28 +121,6 @@ class AddQuizComponent extends React.Component {
     };
     render() {
 
-        // let data = this.state.data.map(d => {
-        //     return (
-        //         <tr key={d.id}>
-        //             <td>{d.name}</td>
-        //             <td>{d.age}</td>
-        //             <td>{d.qualification}</td>
-        //             <td>{d.gender}</td>
-        //             <td>{d.rating}</td>
-        //             <td>{d.city}</td>
-        //             <td>{d.skills && d.skills.join(",")}</td>
-        //             <td>
-        //                 <button
-        //                     onClick={() => {
-        //                         this.onEdit(d.id);
-        //                     }}
-        //                 >
-        //                     edit
-        //     </button>
-        //             </td>
-        //         </tr>
-        //     );
-        // });
         return (
             <div className="App" >
 
@@ -209,37 +187,11 @@ class AddQuizComponent extends React.Component {
                             props: { variant: "outlined" }
 
                         },
-                        // { key: "qualification", label: "Qualification" },
-                        // {
-                        //     key: "city",
-                        //     label: "City",
-                        //     type: "select",
-                        //     value: "Kerala",
-                        //     options: [
-                        //         { key: "mumbai", label: "Mumbai", value: "Mumbai" },
-                        //         { key: "bangalore", label: "Bangalore", value: "Bangalore" },
-                        //         { key: "kerala", label: "Kerala", value: "Kerala" }
-                        //     ]
-                        // },
-                        // {
-                        //     key: "skills",
-                        //     label: "Skills",
-                        //     type: "checkbox",
-                        //     options: [
-                        //         { key: "reactjs", label: "ReactJS", value: "reactjs" },
-                        //         { key: "angular", label: "Angular", value: "angular" },
-                        //         { key: "vuejs", label: "VueJS", value: "vuejs" }
-                        //     ]
-                        // }
                     ]}
                     onSubmit={model => {
                         this.onSubmit(model);
                     }}
                 />
-
-                {/* <table border="1">
-                    <tbody>{data}</tbody>
-                </table> */}
             </div>
         );
     }
