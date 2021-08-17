@@ -1,0 +1,41 @@
+# the below config is to do deployment
+
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: lmsapplication
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: lmsapplication
+  template:
+    metadata:
+      labels:
+        app: lmsapplication
+    spec:
+      containers:
+        - name: lmsapplication
+          image: gouthamvarma1/lmsapplication
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 80
+      restartPolicy: Always
+
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: lmsapplication
+spec:
+  type: NodePort
+  ports:
+    - port: 3050
+      targetPort: 3000
+      protocol: TCP
+      nodePort: 30101
+  selector:
+    app: lmsapplication
+# the below configuration is to expose the kube service 
+
+
